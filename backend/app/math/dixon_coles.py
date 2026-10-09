@@ -152,8 +152,8 @@ class DixonColesModel:
             m11 = (fthg == 1) & (ftag == 1)
 
             tau_vals[m00] = np.maximum(0.01, 1.0 - lam_h[m00] * mu_a[m00] * rho_val)
-            tau_vals[m01] = np.maximum(0.01, 1.0 + mu_a[m01] * rho_val)
-            tau_vals[m10] = np.maximum(0.01, 1.0 + lam_h[m10] * rho_val)
+            tau_vals[m01] = np.maximum(0.01, 1.0 + lam_h[m01] * rho_val)
+            tau_vals[m10] = np.maximum(0.01, 1.0 + mu_a[m10] * rho_val)
             tau_vals[m11] = np.maximum(0.01, 1.0 - rho_val)
 
             log_lik = weights * (log_pmf_h + log_pmf_a + np.log(tau_vals))
