@@ -28,7 +28,7 @@ class Settings(BaseSettings):
     MIN_MATCHES_SAMPLE: int = 10         # Minimum matches for team sample
     
     # Paths
-    BASE_DIR: Path = Path(__file__).resolve().parent.parent.parent
+    BASE_DIR: Path = Path(__file__).resolve().parent.parent.parent.parent
     DATA_DIR: Path = BASE_DIR / "data"
     
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")

@@ -36,12 +36,26 @@ class FootballDataUKIngestion:
         return f"{self.BASE_URL}/{season_code}/{league_code}.csv"
 
     def download_csv(self, season_code: str, league_code: str) -> Optional[Path]:
-        """Download CSV if not cached or refreshable."""
+        """Download CSV if not cached or check local data_league directory."""
         file_path = self.data_dir / f"{season_code}_{league_code}.csv"
+        if file_path.exists():
+            return file_path
+
+        # Check local data_league directory if available in project
+        league_folder_map = {
+            "E0": settings.BASE_DIR / "data_league" / "Premier League",
+            "SP1": settings.BASE_DIR / "data_league" / "La Liga",
+            "I1": settings.BASE_DIR / "data_league" / "Serie A",
+            "D1": settings.BASE_DIR / "data_league" / "Bundesliga",
+        }
+        if league_code in league_folder_map and league_folder_map[league_code].exists():
+            for f in league_folder_map[league_code].glob("*.csv"):
+                if f.exists():
+                    return f
+
         url = self.get_csv_url(season_code, league_code)
-        
         try:
-            with httpx.Client(timeout=15.0) as client:
+            with httpx.Client(timeout=15.0, follow_redirects=True) as client:
                 resp = client.get(url)
                 if resp.status_code == 200:
                     with open(file_path, "wb") as f:
