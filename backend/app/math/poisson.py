@@ -47,3 +47,8 @@ class IndependentPoissonModel:
         matrix = np.outer(home_probs, away_probs)
         matrix /= np.sum(matrix)
         return matrix
+
+    def score_matrix(self, lambda_home: float, lambda_away: float, max_goals: int = 10) -> np.ndarray:
+        """Alias for generate_score_matrix."""
+        return self.generate_score_matrix(lambda_home, lambda_away, max_goals=max_goals)
+

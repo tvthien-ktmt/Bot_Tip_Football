@@ -100,3 +100,39 @@ class PiRatingSystem:
             round(new_away_rh, 4),
             round(new_away_ra, 4)
         )
+
+
+class SkellamGoalDifferenceModel:
+    """
+    M4: Skellam Model for Goal Difference.
+    If Home Goals ~ Poisson(mu_h) and Away Goals ~ Poisson(mu_a),
+    then the goal difference D = Home - Away follows Skellam(mu_h, mu_a).
+    Provides exact closed-form probabilities for 1X2 and goal difference spreads.
+    """
+
+    def __init__(self, league_avg_total: float = 2.70):
+        self.league_avg_total = league_avg_total
+
+    def compute_1x2_from_lambdas(self, mu_home: float, mu_away: float) -> Tuple[float, float, float]:
+        """Calculates exact P(Home Win), P(Draw), P(Away Win) via Skellam distribution."""
+        from scipy.stats import skellam
+        p_draw = float(skellam.pmf(0, mu_home, mu_away))
+        p_away = float(skellam.cdf(-1, mu_home, mu_away))
+        p_home = float(1.0 - skellam.cdf(0, mu_home, mu_away))
+
+        total = p_home + p_draw + p_away
+        return p_home / total, p_draw / total, p_away / total
+
+    def compute_1x2_from_expected_gd(self, expected_gd: float) -> Tuple[float, float, float]:
+        """Convert Elo/Pi-rating expected goal difference to mu_home and mu_away, then compute 1X2."""
+        # mu_home - mu_away = expected_gd
+        # mu_home + mu_away = league_avg_total
+        mu_home = max(0.2, (self.league_avg_total + expected_gd) / 2.0)
+        mu_away = max(0.2, (self.league_avg_total - expected_gd) / 2.0)
+        return self.compute_1x2_from_lambdas(mu_home, mu_away)
+
+    def goal_diff_distribution(self, mu_home: float, mu_away: float, max_gd: int = 5) -> Dict[int, float]:
+        """Probability distribution of goal difference from -max_gd to +max_gd."""
+        from scipy.stats import skellam
+        return {k: float(skellam.pmf(k, mu_home, mu_away)) for k in range(-max_gd, max_gd + 1)}
+

@@ -5,6 +5,8 @@ from fastapi import APIRouter, Depends, Query, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
 
+import pandas as pd
+from backend.app.core.config import settings
 from backend.app.core.database import get_db
 from backend.app.models.entities import (
     League, Team, Match, OddsSnapshot, Tip, BacktestResult, Rating
@@ -35,7 +37,7 @@ def health_check():
     return {
         "status": "healthy",
         "service": "KèoLab Football Tip Analyzer",
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()
     }
 
 
