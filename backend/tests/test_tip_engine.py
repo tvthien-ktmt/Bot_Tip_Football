@@ -54,3 +54,12 @@ def test_tip_engine_divergence_penalty():
     assert "Cảnh báo" in res["risk_warning"]
     # Due to penalty, confidence should be downgraded
     assert res["confidence_grade"] in ("C", "D")
+
+
+def test_tip_engine_shrinkage():
+    # Test that shrinkage pulls probability toward market fair prior
+    engine_shrunk = TipEngine(min_edge=0.02, min_ev=0.02, shrinkage_factor=0.20)
+    p_cal = engine_shrunk.apply_shrinkage(0.60, 0.50)
+    # p_cal = 0.8 * 0.60 + 0.2 * 0.50 = 0.48 + 0.10 = 0.58
+    assert pytest.approx(p_cal, abs=0.001) == 0.58
+

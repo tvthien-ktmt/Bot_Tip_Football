@@ -162,9 +162,9 @@ class CSVDataLoader:
         # Referee
         df["referee"] = df["Referee"].fillna("Unknown").astype(str).str.strip() if "Referee" in df.columns else "Unknown"
 
-        # Odds Fallback Chains: Avg -> B365 -> BW -> Max
-        odds_providers_open = ["Avg", "B365", "BW", "Max", "PS"]
-        odds_providers_close = ["AvgC", "B365C", "BWC", "MaxC", "PSC"]
+        # Odds Fallback Chains for consensus: Avg -> B365 -> BW -> PS (Max is excluded as it represents extreme pricing, not market consensus)
+        odds_providers_open = ["Avg", "B365", "BW", "PS"]
+        odds_providers_close = ["AvgC", "B365C", "BWC", "PSC"]
 
         # 1X2 Open Odds
         open_1x2_data = []
@@ -180,21 +180,19 @@ class CSVDataLoader:
             open_1x2_data.append((o_h, o_d, o_a, prov_o1x2))
 
             # 1X2 Close: e.g. AvgCH, AvgCD, AvgCA
-            # Notice AvgCH vs AvgC + H: column in CSV is AvgCH, B365CH, MaxCH, etc.
-            c_providers = ["Avg", "B365", "BW", "Max", "PS"]
+            c_providers = ["Avg", "B365", "BW", "PS"]
             c_h, c_d, c_a, prov_c1x2 = self.extract_odds_chain(row, c_providers, ["CH", "CD", "CA"])
             close_1x2_data.append((c_h, c_d, c_a, prov_c1x2))
 
             # O/U 2.5 Open: e.g. Avg>2.5, Avg<2.5, B365>2.5...
-            ou_o, ou_u, prov_oou = self.extract_odds_chain(row, ["Avg", "B365", "Max", "P", "BFE"], [">2.5", "<2.5"])
+            ou_o, ou_u, prov_oou = self.extract_odds_chain(row, ["Avg", "B365", "P", "BFE"], [">2.5", "<2.5"])
             open_ou25_data.append((ou_o, ou_u, prov_oou))
 
             # O/U 2.5 Close: AvgC>2.5, AvgC<2.5, Avg C>2.5, B365C>2.5...
-            # Note: in some files, header has Avg C>2.5 or AvgC>2.5
             c_ou_over = np.nan
             c_ou_under = np.nan
             prov_cou = "None"
-            for p_prefix in ["AvgC", "Avg C", "B365C", "MaxC", "PC", "BFEC"]:
+            for p_prefix in ["AvgC", "Avg C", "B365C", "PC", "BFEC"]:
                 ov_col = f"{p_prefix}>2.5"
                 un_col = f"{p_prefix}<2.5"
                 ov_val = pd.to_numeric(row.get(ov_col, np.nan), errors="coerce")
@@ -208,7 +206,7 @@ class CSVDataLoader:
 
             # Asian Handicap Open: AHh + AvgAHH/AvgAHA or B365AHH/B365AHA
             line_open = pd.to_numeric(row.get("AHh", np.nan), errors="coerce")
-            ah_h, ah_a, prov_oah = self.extract_odds_chain(row, ["Avg", "B365", "Max", "P", "BFE"], ["AHH", "AHA"])
+            ah_h, ah_a, prov_oah = self.extract_odds_chain(row, ["Avg", "B365", "P", "BFE"], ["AHH", "AHA"])
             open_ah_data.append((line_open, ah_h, ah_a, prov_oah))
 
             # Asian Handicap Close: AHCh + AvgCAHH/AvgCAHA or B365CAHH/B365CAHA
@@ -216,10 +214,10 @@ class CSVDataLoader:
             # If AHCh is missing, check AHh as fallback
             if pd.isna(line_close):
                 line_close = line_open
-            c_ah_h, c_ah_a, prov_cah = self.extract_odds_chain(row, ["AvgC", "Avg", "B365C", "MaxC", "PCAH", "BFECA"], ["AHH", "AHA"])
+            c_ah_h, c_ah_a, prov_cah = self.extract_odds_chain(row, ["AvgC", "Avg", "B365C", "PCAH", "BFECA"], ["AHH", "AHA"])
             # Also check direct columns like AvgCAHH / B365CAHH
             if pd.isna(c_ah_h):
-                for p_ah in ["Avg", "B365", "Max", "BFE"]:
+                for p_ah in ["Avg", "B365", "BFE"]:
                     h_val = pd.to_numeric(row.get(f"{p_ah}CAHH", np.nan), errors="coerce")
                     a_val = pd.to_numeric(row.get(f"{p_ah}CAHA", np.nan), errors="coerce")
                     if pd.notna(h_val) and pd.notna(a_val) and h_val >= 1.01 and a_val >= 1.01:

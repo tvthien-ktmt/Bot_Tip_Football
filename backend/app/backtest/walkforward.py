@@ -190,12 +190,17 @@ class WalkForwardEvaluator:
                     else:
                         pnl = -1.0
 
+                    ah_close_p = float(row.get("ref_close_ahh", ah_price_f)) if pd.notna(row.get("ref_close_ahh")) else ah_price_f
+                    clv_pct = ((ah_price_f / ah_close_p) - 1.0) * 100.0 if ah_close_p > 1.0 else 0.0
+
                     tips_placed.append({
                         "date": m_date.strftime("%Y-%m-%d"),
                         "match": f"{h_team} vs {a_team}",
                         "market": "AH",
                         "selection": f"Home {ah_line_f}",
                         "odds": ah_price_f,
+                        "odds_close": round(ah_close_p, 3),
+                        "clv_pct": round(clv_pct, 2),
                         "edge": round(edge_ah, 4),
                         "ev": round(ev_ah, 4),
                         "outcome": outcome,
@@ -257,6 +262,8 @@ class WalkForwardEvaluator:
         n_tips = len(tips_placed)
         total_pnl = sum(t["pnl"] for t in tips_placed)
         yield_pct = (total_pnl / n_tips * 100.0) if n_tips > 0 else 0.0
+        avg_clv_pct = float(np.mean([t["clv_pct"] for t in tips_placed])) if n_tips > 0 else 0.0
+        beat_clv_rate = float(np.mean([1 if t["clv_pct"] > 0 else 0 for t in tips_placed]) * 100.0) if n_tips > 0 else 0.0
 
         return {
             "league": league_div,
@@ -278,6 +285,8 @@ class WalkForwardEvaluator:
                 "total_tips": n_tips,
                 "total_pnl": round(total_pnl, 2),
                 "yield_pct": round(yield_pct, 2),
+                "avg_clv_pct": round(avg_clv_pct, 2),
+                "beat_clv_rate": round(beat_clv_rate, 1),
                 "tips_sample": tips_placed[:10]
             }
         }
