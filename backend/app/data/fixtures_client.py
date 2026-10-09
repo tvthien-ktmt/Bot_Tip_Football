@@ -8,6 +8,7 @@ import pandas as pd
 
 from backend.app.core.config import settings
 from backend.app.data.csv_loader import CSVDataLoader, parse_date_flexibly
+from backend.app.data.schedule_parser import load_all_schedules
 
 logger = logging.getLogger(__name__)
 
@@ -24,10 +25,11 @@ DIV_NAMES = {
 
 class UpcomingFixturesClient:
     """
-    Client for acquiring upcoming unplayed matches for prediction:
-    1. Checks for unplayed rows (missing FTHG) in 2026/27 season files.
-    2. Downloads live fixtures from football-data.co.uk/fixtures.csv.
-    3. Supports manual fixture insertion / CSV upload.
+    Client for acquiring upcoming unplayed matches for prediction.
+    Priority order:
+    1. Local schedule files (Lich_Thi_Dau/*.txt) — always available offline.
+    2. Unplayed rows (missing FTHG) in 2026/27 season CSV/parquet files.
+    3. Live fixtures from football-data.co.uk/fixtures.csv (online fallback).
     Standardizes reference odds for 1X2, O/U 2.5, and Asian Handicap.
     """
 
@@ -56,39 +58,94 @@ class UpcomingFixturesClient:
 
         return pd.DataFrame()
 
+    def load_schedule_fixtures(self, target_divs: List[str]) -> pd.DataFrame:
+        """
+        Load upcoming fixtures from local Lich_Thi_Dau TXT schedule files.
+        These are always available offline and contain the full season calendar.
+        """
+        schedule_dir = settings.BASE_DIR / "Lich_Thi_Dau"
+        if not schedule_dir.exists():
+            logger.info("Lich_Thi_Dau directory not found, skipping schedule files.")
+            return pd.DataFrame()
+
+        try:
+            all_schedules = load_all_schedules(schedule_dir)
+            if all_schedules.empty:
+                return pd.DataFrame()
+
+            # Filter to target divisions
+            filtered = all_schedules[all_schedules["Div"].isin(target_divs)].copy()
+
+            # Filter to upcoming matches only (from today onwards)
+            today = pd.Timestamp.now().normalize()
+            if "match_date" in filtered.columns:
+                filtered = filtered[filtered["match_date"] >= today].copy()
+
+            logger.info(f"Loaded {len(filtered)} upcoming fixtures from schedule files")
+            return filtered
+        except Exception as e:
+            logger.error(f"Error loading schedule fixtures: {e}")
+            return pd.DataFrame()
+
     def get_upcoming_fixtures(self, target_divs: Optional[List[str]] = None) -> pd.DataFrame:
         """
         Aggregate all upcoming unplayed matches across target leagues.
-        Target date is around 2026-10-09.
+        Priority: Schedule files > Parquet unplayed > Live fixtures.csv
         """
         if target_divs is None:
             target_divs = ["E0", "E1", "SP1", "I1", "D1"]
 
-        # First, check cleaned_matches.parquet for unplayed rows in 2026/27
+        all_sources = []
+
+        # Source 1: Local schedule TXT files (highest priority, always available)
+        schedule_df = self.load_schedule_fixtures(target_divs)
+        if not schedule_df.empty:
+            all_sources.append(schedule_df)
+
+        # Source 2: Check cleaned_matches.parquet for unplayed rows in 2026/27
         parquet_path = self.cache_dir / "cleaned_matches.parquet"
-        unplayed_from_files = pd.DataFrame()
         if parquet_path.exists():
-            df_all = pd.read_parquet(parquet_path)
-            unplayed_mask = df_all["Div"].isin(target_divs) & df_all["FTHG"].isna()
-            unplayed_from_files = df_all[unplayed_mask].copy()
+            try:
+                df_all = pd.read_parquet(parquet_path)
+                unplayed_mask = df_all["Div"].isin(target_divs) & df_all["FTHG"].isna()
+                unplayed_from_files = df_all[unplayed_mask].copy()
+                if not unplayed_from_files.empty:
+                    all_sources.append(unplayed_from_files)
+            except Exception as e:
+                logger.warning(f"Error reading parquet: {e}")
 
-        # Next, fetch live fixtures
+        # Source 3: Live fixtures from football-data.co.uk
         live_raw = self.fetch_live_fixtures()
-        unplayed_from_live = pd.DataFrame()
         if not live_raw.empty:
-            live_raw.columns = [str(c).strip() for c in live_raw.columns]
-            div_mask = live_raw["Div"].isin(target_divs)
-            live_filtered = live_raw[div_mask].copy()
-            if not live_filtered.empty:
-                unplayed_from_live = self.loader.standardize_dataframe(live_filtered, source_file="fixtures.csv")
+            try:
+                live_raw.columns = [str(c).strip() for c in live_raw.columns]
+                if "Div" in live_raw.columns:
+                    div_mask = live_raw["Div"].isin(target_divs)
+                    live_filtered = live_raw[div_mask].copy()
+                    if not live_filtered.empty:
+                        unplayed_from_live = self.loader.standardize_dataframe(
+                            live_filtered, source_file="fixtures.csv"
+                        )
+                        all_sources.append(unplayed_from_live)
+            except Exception as e:
+                logger.warning(f"Error processing live fixtures: {e}")
 
-        # Combine
-        combined = pd.concat([unplayed_from_files, unplayed_from_live], ignore_index=True)
-        if combined.empty:
-            logger.warning("No unplayed fixtures found automatically.")
+        # Combine all sources
+        if not all_sources:
+            logger.warning("No unplayed fixtures found from any source.")
             return pd.DataFrame()
 
-        # Deduplicate
-        combined = combined.drop_duplicates(subset=["Div", "match_date", "home_team", "away_team"]).reset_index(drop=True)
-        combined = combined.sort_values(by=["match_date", "kickoff_time", "home_team"]).reset_index(drop=True)
+        combined = pd.concat(all_sources, ignore_index=True)
+
+        # Deduplicate: prefer schedule data (first source) over others
+        combined = combined.drop_duplicates(
+            subset=["Div", "match_date", "home_team", "away_team"],
+            keep="first"
+        ).reset_index(drop=True)
+
+        combined = combined.sort_values(
+            by=["match_date", "kickoff_time", "home_team"]
+        ).reset_index(drop=True)
+
+        logger.info(f"Total upcoming fixtures: {len(combined)}")
         return combined

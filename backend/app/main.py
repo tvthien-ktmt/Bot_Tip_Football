@@ -12,14 +12,19 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(na
 logger = logging.getLogger("keolab")
 
 
+from backend.app.data.sync_database import sync_database
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup: ensure tables exist and seed database if empty
+    # Startup: ensure tables exist and seed database
     logger.info("Initializing KèoLab Database & Quantitative Models...")
     Base.metadata.create_all(bind=engine)
     db = SessionLocal()
     try:
-        seed_database(db, force=False)
+        from backend.app.models.entities import Match
+        if db.query(Match).filter_by(status="SCHEDULED").count() == 0:
+            logger.info("No SCHEDULED matches found, running sync_database...")
+            sync_database(db, force_reseed_scheduled=True)
     finally:
         db.close()
     yield

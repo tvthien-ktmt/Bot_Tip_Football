@@ -1,0 +1,507 @@
+Vòng 5 (10/10 – 11/10/2026)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+10/10 - 20:30	Borussia Dortmund	vs	Werder Bremen
+10/10 - 20:30	RB Leipzig	vs	Eintracht Frankfurt
+10/10 - 20:30	FC Augsburg	vs	Bayern Munich
+10/10 - 20:30	FSV Mainz 05	vs	Bayer Leverkusen
+10/10 - 20:30	Union Berlin	vs	SV Elversberg
+10/10 - 20:30	FC Köln	vs	Borussia Mönchengladbach
+10/10 - 20:30	TSG Hoffenheim	vs	Hamburger SV
+10/10 - 20:30	SC Freiburg	vs	FC Schalke 04
+10/10 - 20:30	SC Paderborn 07	vs	VfB Stuttgart
+Vòng 6 (17/10 – 18/10/2026)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+17/10 - 20:30	Bayern Munich	vs	RB Leipzig
+17/10 - 20:30	Bayer Leverkusen	vs	SC Freiburg
+17/10 - 20:30	Eintracht Frankfurt	vs	FC Köln
+17/10 - 20:30	Union Berlin	vs	Borussia Dortmund
+17/10 - 20:30	Borussia Mönchengladbach	vs	TSG Hoffenheim
+17/10 - 20:30	Hamburger SV	vs	VfB Stuttgart
+17/10 - 20:30	Werder Bremen	vs	SC Paderborn 07
+17/10 - 20:30	FC Schalke 04	vs	FSV Mainz 05
+17/10 - 20:30	SV Elversberg	vs	FC Augsburg
+Vòng 7 (24/10 – 25/10/2026)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+24/10 - 20:30	Borussia Dortmund	vs	Eintracht Frankfurt
+24/10 - 20:30	RB Leipzig	vs	SV Elversberg
+24/10 - 20:30	VfB Stuttgart	vs	Borussia Mönchengladbach
+24/10 - 20:30	TSG Hoffenheim	vs	Bayer Leverkusen
+24/10 - 20:30	SC Freiburg	vs	Bayern Munich
+24/10 - 20:30	FC Augsburg	vs	Union Berlin
+24/10 - 20:30	FSV Mainz 05	vs	Werder Bremen
+24/10 - 20:30	FC Köln	vs	FC Schalke 04
+24/10 - 20:30	Hamburger SV	vs	SC Paderborn 07
+Vòng 8 (31/10 – 01/11/2026)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+31/10 - 21:30	Bayern Munich	vs	Borussia Dortmund
+31/10 - 21:30	Bayer Leverkusen	vs	VfB Stuttgart
+31/10 - 21:30	Eintracht Frankfurt	vs	Hamburger SV
+31/10 - 21:30	FC Augsburg	vs	SC Freiburg
+31/10 - 21:30	Borussia Mönchengladbach	vs	SC Paderborn 07
+31/10 - 21:30	Werder Bremen	vs	TSG Hoffenheim
+31/10 - 21:30	FC Schalke 04	vs	RB Leipzig
+31/10 - 21:30	SV Elversberg	vs	FSV Mainz 05
+31/10 - 21:30	Union Berlin	vs	FC Köln
+Vòng 9 (07/11 – 08/11/2026)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+07/11 - 21:30	FSV Mainz 05	vs	Bayern Munich
+07/11 - 21:30	Hamburger SV	vs	Borussia Mönchengladbach
+07/11 - 21:30	RB Leipzig	vs	FC Augsburg
+07/11 - 21:30	VfB Stuttgart	vs	Werder Bremen
+07/11 - 21:30	FC Köln	vs	Bayer Leverkusen
+07/11 - 21:30	SC Paderborn 07	vs	Eintracht Frankfurt
+07/11 - 21:30	Borussia Dortmund	vs	FC Schalke 04
+07/11 - 21:30	TSG Hoffenheim	vs	SC Freiburg
+07/11 - 21:30	SV Elversberg	vs	Union Berlin
+Vòng 10 (21/11 – 22/11/2026)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+21/11 - 21:30	Bayern Munich	vs	FC Köln
+21/11 - 21:30	Union Berlin	vs	RB Leipzig
+21/11 - 21:30	Borussia Mönchengladbach	vs	Borussia Dortmund
+21/11 - 21:30	Werder Bremen	vs	Hamburger SV
+21/11 - 21:30	Eintracht Frankfurt	vs	VfB Stuttgart
+21/11 - 21:30	Bayer Leverkusen	vs	SV Elversberg
+21/11 - 21:30	SC Freiburg	vs	FSV Mainz 05
+21/11 - 21:30	FC Schalke 04	vs	TSG Hoffenheim
+21/11 - 21:30	FC Augsburg	vs	SC Paderborn 07
+Vòng 11 (28/11 – 29/11/2026)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+28/11 - 02:30	Werder Bremen	vs	B. Monchengladbach
+28/11 - 21:30	FC Koln	vs	Elversberg
+28/11 - 21:30	Hamburger	vs	Bayern Munich
+28/11 - 21:30	Mainz	vs	Union Berlin
+28/11 - 21:30	Paderborn	vs	Schalke
+29/11 - 00:30	Stuttgart	vs	Frankfurt
+29/11 - 21:30	Freiburg	vs	RB Leipzig
+29/11 - 23:30	Hoffenheim	vs	Augsburg
+30/11 - 01:30	Dortmund	vs	Bayer Leverkusen
+Vòng 12 (05/12 – 06/12/2026)
+Thời gian thi đấu
+
+Đội nhà
+
+Tỷ số
+
+Đội khách
+
+05/12/2026
+
+21:30
+
+Augsburg
+
+vs
+
+Cologne
+
+05/12/2026
+
+21:30
+
+Bayer Leverkusen
+
+vs
+
+B. Monchengladbach
+
+05/12/2026
+
+21:30
+
+Bayern Munich
+
+vs
+
+Paderborn
+
+05/12/2026
+
+21:30
+
+Frankfurt
+
+vs
+
+Werder Bremen
+
+05/12/2026
+
+21:30
+
+Elversberg
+
+vs
+
+Stuttgart
+
+05/12/2026
+
+21:30
+
+Freiburg
+
+vs
+
+Hoffenheim
+
+05/12/2026
+
+21:30
+
+RB Leipzig
+
+vs
+
+Mainz
+
+05/12/2026
+
+21:30
+
+Schalke
+
+vs
+
+Dortmund
+
+05/12/2026
+
+21:30
+
+Union Berlin
+
+vs
+
+Hamburger
+
+Vòng 13 (12/12 – 13/12/2026)
+Thời gian thi đấu
+
+Đội nhà
+
+Tỷ số
+
+Đội khách
+
+12/12/2026
+
+21:30
+
+B. Monchengladbach
+
+vs
+
+Frankfurt
+
+12/12/2026
+
+21:30
+
+Dortmund
+
+vs
+
+Augsburg
+
+12/12/2026
+
+21:30
+
+Cologne
+
+vs
+
+RB Leipzig
+
+12/12/2026
+
+21:30
+
+Hamburger
+
+vs
+
+Schalke
+
+12/12/2026
+
+21:30
+
+Hoffenheim
+
+vs
+
+Bayern Munich
+
+12/12/2026
+
+21:30
+
+Mainz
+
+vs
+
+Freiburg
+
+12/12/2026
+
+21:30
+
+Paderborn
+
+vs
+
+Elversberg
+
+12/12/2026
+
+21:30
+
+Stuttgart
+
+vs
+
+Union Berlin
+
+12/12/2026
+
+21:30
+
+Werder Bremen
+
+vs
+
+Bayer Leverkusen
+
+Vòng 14 (19/12 – 20/12/2026)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+19/12 - 20/12/2026	Bayern Munich	vs	RB Leipzig
+19/12 - 20/12/2026	Borussia Dortmund	vs	TSG Hoffenheim
+19/12 - 20/12/2026	VfB Stuttgart	vs	FSV Mainz 05
+19/12 - 20/12/2026	Werder Bremen	vs	FC Schalke 04
+19/12 - 20/12/2026	Eintracht Frankfurt	vs	Bayer Leverkusen
+19/12 - 20/12/2026	SC Freiburg	vs	FC Köln
+19/12 - 20/12/2026	SV Elversberg	vs	SC Paderborn 07
+19/12 - 20/12/2026	FC Augsburg	vs	Union Berlin
+19/12 - 20/12/2026	Hamburger SV	vs	Borussia M'gladbach
+Vòng 15 (09/01 – 10/01/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+09/01 - 10/01/2027	Bayer Leverkusen	vs	Borussia Dortmund
+09/01 - 10/01/2027	RB Leipzig	vs	SV Elversberg
+09/01 - 10/01/2027	Borussia M'gladbach	vs	Werder Bremen
+09/01 - 10/01/2027	FSV Mainz 05	vs	FC Köln
+09/01 - 10/01/2027	TSG Hoffenheim	vs	Bayern Munich
+09/01 - 10/01/2027	Union Berlin	vs	SC Freiburg
+09/01 - 10/01/2027	SC Paderborn 07	vs	VfB Stuttgart
+09/01 - 10/01/2027	FC Schalke 04	vs	Eintracht Frankfurt
+09/01 - 10/01/2027	FC Augsburg	vs	Hamburger SV
+Vòng 16 (13/01/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+13/01/2027	Bayern Munich	vs	SC Paderborn 07
+13/01/2027	Borussia Dortmund	vs	FSV Mainz 05
+13/01/2027	VfB Stuttgart	vs	FC Schalke 04
+13/01/2027	Werder Bremen	vs	Eintracht Frankfurt
+13/01/2027	FC Köln	vs	RB Leipzig
+13/01/2027	SC Freiburg	vs	Bayer Leverkusen
+13/01/2027	SV Elversberg	vs	Borussia M'gladbach
+13/01/2027	Hamburger SV	vs	Union Berlin
+13/01/2027	TSG Hoffenheim	vs	FC Augsburg
+Vòng 17 (16/01 – 17/01/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+16/01 - 17/01/2027	RB Leipzig	vs	SC Paderborn 07
+16/01 - 17/01/2027	Bayer Leverkusen	vs	TSG Hoffenheim
+16/01 - 17/01/2027	Borussia M'gladbach	vs	FC Schalke 04
+16/01 - 17/01/2027	FSV Mainz 05	vs	SV Elversberg
+16/01 - 17/01/2027	Eintracht Frankfurt	vs	Bayern Munich
+16/01 - 17/01/2027	Union Berlin	vs	Borussia Dortmund
+16/01 - 17/01/2027	SC Freiburg	vs	VfB Stuttgart
+16/01 - 17/01/2027	FC Augsburg	vs	FC Köln
+16/01 - 17/01/2027	Werder Bremen	vs	Hamburger SV
+Giai đoạn lượt về (Vòng 18 – Vòng 34)
+Vòng 18 (23/01 – 24/01/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+23/01 - 24/01/2027	VfB Stuttgart	vs	Bayern Munich
+23/01 - 24/01/2027	Borussia M'gladbach	vs	RB Leipzig
+23/01 - 24/01/2027	SC Paderborn 07	vs	FSV Mainz 05
+23/01 - 24/01/2027	TSG Hoffenheim	vs	FC Köln
+23/01 - 24/01/2027	Eintracht Frankfurt	vs	Union Berlin
+23/01 - 24/01/2027	Bayer Leverkusen	vs	SV Elversberg
+23/01 - 24/01/2027	Hamburger SV	vs	Borussia Dortmund
+23/01 - 24/01/2027	Werder Bremen	vs	SC Freiburg
+23/01 - 24/01/2027	FC Schalke 04	vs	FC Augsburg
+Vòng 19 (30/01 – 31/01/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+30/01 - 31/01/2027	FC Köln	vs	VfB Stuttgart
+30/01 - 31/01/2027	SV Elversberg	vs	Borussia M'gladbach
+30/01 - 31/01/2027	RB Leipzig	vs	Werder Bremen
+30/01 - 31/01/2027	Borussia Dortmund	vs	TSG Hoffenheim
+30/01 - 31/01/2027	SC Freiburg	vs	SC Paderborn 07
+30/01 - 31/01/2027	Union Berlin	vs	Bayer Leverkusen
+30/01 - 31/01/2027	Bayern Munich	vs	FC Schalke 04
+30/01 - 31/01/2027	FSV Mainz 05	vs	Hamburger SV
+30/01 - 31/01/2027	FC Augsburg	vs	Eintracht Frankfurt
+Vòng 20 (06/02 – 07/02/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+06/02 - 07/02/2027	FC Schalke 04	vs	Union Berlin
+06/02 - 07/02/2027	SC Paderborn 07	vs	Borussia Dortmund
+06/02 - 07/02/2027	Eintracht Frankfurt	vs	FSV Mainz 05
+06/02 - 07/02/2027	VfB Stuttgart	vs	TSG Hoffenheim
+06/02 - 07/02/2027	Borussia M'gladbach	vs	SC Freiburg
+06/02 - 07/02/2027	Bayer Leverkusen	vs	FC Augsburg
+06/02 - 07/02/2027	Werder Bremen	vs	FC Köln
+06/02 - 07/02/2027	Hamburger SV	vs	RB Leipzig
+06/02 - 07/02/2027	Bayern Munich	vs	SV Elversberg
+Vòng 21 (13/02 – 14/02/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+13/02 - 14/02/2027	Union Berlin	vs	Bayern Munich
+13/02 - 14/02/2027	FC Augsburg	vs	Werder Bremen
+13/02 - 14/02/2027	FSV Mainz 05	vs	Borussia M'gladbach
+13/02 - 14/02/2027	FC Köln	vs	Hamburger SV
+13/02 - 14/02/2027	SC Freiburg	vs	Eintracht Frankfurt
+13/02 - 14/02/2027	Borussia Dortmund	vs	VfB Stuttgart
+13/02 - 14/02/2027	RB Leipzig	vs	Bayer Leverkusen
+13/02 - 14/02/2027	SV Elversberg	vs	FC Schalke 04
+13/02 - 14/02/2027	TSG Hoffenheim	vs	SC Paderborn 07
+Vòng 22 (20/02 – 21/02/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+20/02 - 21/02/2027	Bayer Leverkusen	vs	FSV Mainz 05
+20/02 - 21/02/2027	Eintracht Frankfurt	vs	RB Leipzig
+20/02 - 21/02/2027	Borussia M'gladbach	vs	FC Köln
+20/02 - 21/02/2027	Werder Bremen	vs	Borussia Dortmund
+20/02 - 21/02/2027	SC Paderborn 07	vs	SC Freiburg
+20/02 - 21/02/2027	FC Schalke 04	vs	TSG Hoffenheim
+20/02 - 21/02/2027	VfB Stuttgart	vs	SV Elversberg
+20/02 - 21/02/2027	Hamburger SV	vs	Union Berlin
+20/02 - 21/02/2027	Bayern Munich	vs	FC Augsburg
+Vòng 23 (27/02 – 28/02/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+27/02 - 28/02/2027	Borussia Dortmund	vs	Bayern Munich
+27/02 - 28/02/2027	RB Leipzig	vs	VfB Stuttgart
+27/02 - 28/02/2027	FC Köln	vs	Bayer Leverkusen
+27/02 - 28/02/2027	FC Augsburg	vs	Borussia M'gladbach
+27/02 - 28/02/2027	Union Berlin	vs	Werder Bremen
+27/02 - 28/02/2027	SV Elversberg	vs	Eintracht Frankfurt
+27/02 - 28/02/2027	FSV Mainz 05	vs	SC Paderborn 07
+27/02 - 28/02/2027	SC Freiburg	vs	FC Schalke 04
+27/02 - 28/02/2027	TSG Hoffenheim	vs	Hamburger SV
+Vòng 24 (03/03 – 04/03/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+03/03 - 04/03/2027	Bayern Munich	vs	RB Leipzig
+03/03 - 04/03/2027	Bayer Leverkusen	vs	Borussia Dortmund
+03/03 - 04/03/2027	VfB Stuttgart	vs	FSV Mainz 05
+03/03 - 04/03/2027	SC Paderborn 07	vs	FC Köln
+03/03 - 04/03/2027	Eintracht Frankfurt	vs	TSG Hoffenheim
+03/03 - 04/03/2027	Hamburger SV	vs	SC Freiburg
+03/03 - 04/03/2027	Borussia M'gladbach	vs	Union Berlin
+03/03 - 04/03/2027	Werder Bremen	vs	SV Elversberg
+03/03 - 04/03/2027	FC Schalke 04	vs	FC Augsburg
+Vòng 25 (06/03 – 07/03/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+06/03 - 07/03/2027	SC Freiburg	vs	Bayern Munich
+06/03 - 07/03/2027	Bayer Leverkusen	vs	VfB Stuttgart
+06/03 - 07/03/2027	Borussia Dortmund	vs	Borussia M'gladbach
+06/03 - 07/03/2027	TSG Hoffenheim	vs	Werder Bremen
+06/03 - 07/03/2027	FSV Mainz 05	vs	Eintracht Frankfurt
+06/03 - 07/03/2027	RB Leipzig	vs	SC Paderborn 07
+06/03 - 07/03/2027	FC Köln	vs	FC Schalke 04
+06/03 - 07/03/2027	SV Elversberg	vs	Hamburger SV
+06/03 - 07/03/2027	Union Berlin	vs	FC Augsburg
+Vòng 26 (13/03 – 14/03/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+13/03 - 14/03/2027	Bayern Munich	vs	Bayer Leverkusen
+13/03 - 14/03/2027	FC Schalke 04	vs	Borussia Dortmund
+13/03 - 14/03/2027	SC Freiburg	vs	RB Leipzig
+13/03 - 14/03/2027	Werder Bremen	vs	FSV Mainz 05
+13/03 - 14/03/2027	Eintracht Frankfurt	vs	FC Köln
+13/03 - 14/03/2027	Borussia M'gladbach	vs	TSG Hoffenheim
+13/03 - 14/03/2027	SC Paderborn 07	vs	Union Berlin
+13/03 - 14/03/2027	FC Augsburg	vs	SV Elversberg
+13/03 - 14/03/2027	VfB Stuttgart	vs	Hamburger SV
+Vòng 27 (03/04 – 04/04/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+03/04 - 04/04/2027	FSV Mainz 05	vs	Bayern Munich
+03/04 - 04/04/2027	Union Berlin	vs	VfB Stuttgart
+03/04 - 04/04/2027	Bayer Leverkusen	vs	Borussia M'gladbach
+03/04 - 04/04/2027	Hamburger SV	vs	Werder Bremen
+03/04 - 04/04/2027	Borussia Dortmund	vs	Eintracht Frankfurt
+03/04 - 04/04/2027	SV Elversberg	vs	SC Paderborn 07
+03/04 - 04/04/2027	FC Köln	vs	SC Freiburg
+03/04 - 04/04/2027	TSG Hoffenheim	vs	FC Schalke 04
+03/04 - 04/04/2027	RB Leipzig	vs	FC Augsburg
+Vòng 28 (10/04 – 11/04/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+10/04 - 11/04/2027	Bayern Munich	vs	Borussia Dortmund
+10/04 - 11/04/2027	VfB Stuttgart	vs	RB Leipzig
+10/04 - 11/04/2027	Borussia M'gladbach	vs	Bayer Leverkusen
+10/04 - 11/04/2027	FC Augsburg	vs	FSV Mainz 05
+10/04 - 11/04/2027	SV Elversberg	vs	FC Köln
+10/04 - 11/04/2027	SC Freiburg	vs	TSG Hoffenheim
+10/04 - 11/04/2027	Werder Bremen	vs	Union Berlin
+10/04 - 11/04/2027	Eintracht Frankfurt	vs	SC Paderborn 07
+10/04 - 11/04/2027	FC Schalke 04	vs	Hamburger SV
+Vòng 29 (17/04 – 18/04/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+17/04 - 18/04/2027	FC Köln	vs	Bayern Munich
+17/04 - 18/04/2027	Borussia M'gladbach	vs	VfB Stuttgart
+17/04 - 18/04/2027	Bayer Leverkusen	vs	Werder Bremen
+17/04 - 18/04/2027	RB Leipzig	vs	Eintracht Frankfurt
+17/04 - 18/04/2027	Borussia Dortmund	vs	SC Freiburg
+17/04 - 18/04/2027	FSV Mainz 05	vs	FC Schalke 04
+17/04 - 18/04/2027	Union Berlin	vs	SV Elversberg
+17/04 - 18/04/2027	SC Paderborn 07	vs	FC Augsburg
+17/04 - 18/04/2027	TSG Hoffenheim	vs	Hamburger SV
+Vòng 30 (24/04 – 25/04/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+24/04 - 25/04/2027	Borussia Dortmund	vs	RB Leipzig
+24/04 - 25/04/2027	VfB Stuttgart	vs	Bayer Leverkusen
+24/04 - 25/04/2027	Bayern Munich	vs	Borussia M'gladbach
+24/04 - 25/04/2027	SC Freiburg	vs	FSV Mainz 05
+24/04 - 25/04/2027	FC Augsburg	vs	FC Köln
+24/04 - 25/04/2027	SV Elversberg	vs	TSG Hoffenheim
+24/04 - 25/04/2027	Eintracht Frankfurt	vs	Union Berlin
+24/04 - 25/04/2027	Werder Bremen	vs	SC Paderborn 07
+24/04 - 25/04/2027	Hamburger SV	vs	FC Schalke 04
+Vòng 31 (08/05 – 09/05/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+08/05 - 09/05/2027	RB Leipzig	vs	Bayern Munich
+08/05 - 09/05/2027	TSG Hoffenheim	vs	Borussia Dortmund
+08/05 - 09/05/2027	FSV Mainz 05	vs	VfB Stuttgart
+08/05 - 09/05/2027	FC Schalke 04	vs	Werder Bremen
+08/05 - 09/05/2027	Bayer Leverkusen	vs	Eintracht Frankfurt
+08/05 - 09/05/2027	FC Köln	vs	SC Freiburg
+08/05 - 09/05/2027	SC Paderborn 07	vs	SV Elversberg
+08/05 - 09/05/2027	Union Berlin	vs	FC Augsburg
+08/05 - 09/05/2027	Borussia M'gladbach	vs	Hamburger SV
+Vòng 32 (15/05 – 16/05/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+15/05 - 16/05/2027	Borussia Dortmund	vs	Bayer Leverkusen
+15/05 - 16/05/2027	SV Elversberg	vs	RB Leipzig
+15/05 - 16/05/2027	Werder Bremen	vs	Borussia M'gladbach
+15/05 - 16/05/2027	FC Köln	vs	FSV Mainz 05
+15/05 - 16/05/2027	Bayern Munich	vs	TSG Hoffenheim
+15/05 - 16/05/2027	SC Freiburg	vs	Union Berlin
+15/05 - 16/05/2027	VfB Stuttgart	vs	SC Paderborn 07
+15/05 - 16/05/2027	Eintracht Frankfurt	vs	FC Schalke 04
+15/05 - 16/05/2027	Hamburger SV	vs	FC Augsburg
+Vòng 33 (18/05 – 19/05/2027)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+18/05 - 19/05/2027	SC Paderborn 07	vs	Bayern Munich
+18/05 - 19/05/2027	FSV Mainz 05	vs	Borussia Dortmund
+18/05 - 19/05/2027	FC Schalke 04	vs	VfB Stuttgart
+18/05 - 19/05/2027	Eintracht Frankfurt	vs	Werder Bremen
+18/05 - 19/05/2027	RB Leipzig	vs	FC Köln
+18/05 - 19/05/2027	Bayer Leverkusen	vs	SC Freiburg
+18/05 - 19/05/2027	Borussia M'gladbach	vs	SV Elversberg
+18/05 - 19/05/2027	Union Berlin	vs	Hamburger SV
+18/05 - 19/05/2027	FC Augsburg	vs	TSG Hoffenheim
+Vòng 34 (22/05/2027 - Hạ màn đồng loạt)
+Thời gian thi đấu	Đội nhà	Tỷ số	Đội khách
+22/05/2027 - 20:30	SC Paderborn 07	vs	RB Leipzig
+22/05/2027 - 20:30	TSG Hoffenheim	vs	Bayer Leverkusen
+22/05/2027 - 20:30	FC Schalke 04	vs	Borussia M'gladbach
+22/05/2027 - 20:30	SV Elversberg	vs	FSV Mainz 05
+22/05/2027 - 20:30	Bayern Munich	vs	Eintracht Frankfurt
+22/05/2027 - 20:30	Borussia Dortmund	vs	Union Berlin
+22/05/2027 - 20:30	VfB Stuttgart	vs	SC Freiburg
+22/05/2027 - 20:30	FC Köln	vs	FC Augsburg
+22/05/2027 - 20:30	Hamburger SV	vs	Werder Bremen

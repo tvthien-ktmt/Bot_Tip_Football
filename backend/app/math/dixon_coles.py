@@ -25,9 +25,11 @@ class DixonColesModel:
         if x == 0 and y == 0:
             return max(0.01, 1.0 - lambda_h * mu_a * r)
         elif x == 0 and y == 1:
-            return max(0.01, 1.0 + mu_a * r)
-        elif x == 1 and y == 0:
+            # Dixon & Coles eq 4.1: τ(0,1) = 1 + λ₁ρ
             return max(0.01, 1.0 + lambda_h * r)
+        elif x == 1 and y == 0:
+            # Dixon & Coles eq 4.1: τ(1,0) = 1 + μ₂ρ
+            return max(0.01, 1.0 + mu_a * r)
         elif x == 1 and y == 1:
             return max(0.01, 1.0 - r)
         else:

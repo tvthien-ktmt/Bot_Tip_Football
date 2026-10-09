@@ -118,10 +118,10 @@ export default function DashboardPage() {
           {[
             { code: "ALL", label: "Tất cả giải" },
             { code: "E0", label: "Premier League" },
+            { code: "E1", label: "Championship" },
             { code: "SP1", label: "La Liga" },
             { code: "I1", label: "Serie A" },
             { code: "D1", label: "Bundesliga" },
-            { code: "F1", label: "Ligue 1" },
           ].map((lg) => (
             <button
               key={lg.code}

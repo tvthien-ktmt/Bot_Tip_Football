@@ -196,10 +196,14 @@ class MatchPredictor:
         # O/U 2.5 Evaluation
         if pd.notna(o_ov) and o_ov > 1.01 and pd.notna(o_un) and o_un > 1.01:
             fair_ou25 = get_fair_probabilities([float(o_ov), float(o_un)], method="shin")[0]
+            fair_un25 = 1.0 - fair_ou25
             p_model_ov25 = probs_ou["2.5"]
-            edge_ou = p_model_ov25 - fair_ou25
-            ev_ou = p_model_ov25 * (float(o_ov) - 1.0) - (1.0 - p_model_ov25)
-            if edge_ou >= 0.028 and ev_ou >= 0.035:
+            p_model_un25 = 1.0 - p_model_ov25
+
+            # Check Over 2.5
+            edge_ov = p_model_ov25 - fair_ou25
+            ev_ov = p_model_ov25 * (float(o_ov) - 1.0) - (1.0 - p_model_ov25)
+            if edge_ov >= 0.028 and ev_ov >= 0.035:
                 tips.append({
                     "market": "O/U 2.5",
                     "selection": "Over 2.5",
@@ -207,13 +211,33 @@ class MatchPredictor:
                     "odds": float(o_ov),
                     "model_prob": round(p_model_ov25, 4),
                     "fair_prob": round(fair_ou25, 4),
-                    "edge": round(edge_ou, 4),
-                    "ev": round(ev_ou, 4),
+                    "edge": round(edge_ov, 4),
+                    "ev": round(ev_ov, 4),
                     "grade": "B",
                     "stake_virtual": "1.2%",
                     "reasons": [f"Tổng bàn thắng kỳ vọng {exp_goals_h + exp_goals_a:.2f} > 2.5", ctx["form_desc"]],
                     "risks": ["Hiệu suất chuyển hóa cơ hội thấp trong các trận cầu đinh"]
                 })
+            # Check Under 2.5
+            elif edge_un := (p_model_un25 - fair_un25):
+                ev_un = p_model_un25 * (float(o_un) - 1.0) - (1.0 - p_model_un25)
+                if edge_un >= 0.028 and ev_un >= 0.035:
+                    tips.append({
+                        "market": "O/U 2.5",
+                        "selection": "Under 2.5",
+                        "line": 2.5,
+                        "odds": float(o_un),
+                        "model_prob": round(p_model_un25, 4),
+                        "fair_prob": round(fair_un25, 4),
+                        "edge": round(edge_un, 4),
+                        "ev": round(ev_un, 4),
+                        "grade": "B",
+                        "stake_virtual": "1.2%",
+                        "reasons": [f"Tổng bàn thắng kỳ vọng {exp_goals_h + exp_goals_a:.2f} < 2.5", ctx["form_desc"]],
+                        "risks": ["Đội có xu hướng ghi nhiều bàn ở cuối hiệp 2"]
+                    })
+                else:
+                    no_bet_reasons.append("Tài/Xỉu 2.5: Biên lợi nhuận thị trường hấp thụ hoàn toàn edge thống kê.")
             else:
                 no_bet_reasons.append("Tài/Xỉu 2.5: Biên lợi nhuận thị trường hấp thụ hoàn toàn edge thống kê.")
 

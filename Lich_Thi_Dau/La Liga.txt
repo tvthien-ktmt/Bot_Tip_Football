@@ -1,0 +1,1643 @@
+Thứ bảy 10/10/2026
+Vòng 8
+Malaga
+Malaga
+02:00
+Espanyol
+Espanyol
+Rayo Vallecano
+Rayo Vallecano
+19:00
+Athletic Club
+Athletic Club
+Alaves
+Alaves
+21:15
+Atletico 
+Atletico
+Barca
+Barca
+23:30
+Getafe
+Getafe
+Chủ nhật 11/10/2026
+Vòng 8
+Real Madrid
+Real Madrid
+02:00
+Villarreal
+Villarreal
+Elche
+Elche
+19:00
+Celta Vigo
+Celta Vigo
+Sociedad
+Sociedad
+21:15
+Deportivo La Coruna
+Deportivo La Coruna
+Real Betis
+Real Betis
+23:30
+Osasuna
+Osasuna
+Thứ hai 12/10/2026
+Vòng 8
+Racing Santander
+Racing Santander
+02:00
+Valencia
+Valencia
+Thứ ba 13/10/2026
+Vòng 8
+Levante
+Levante
+02:00
+Sevilla
+Sevilla
+Thứ bảy 17/10/2026
+Vòng 9
+Deportivo La Coruna
+Deportivo La Coruna
+02:00
+Levante
+Levante
+Espanyol
+Espanyol
+19:00
+Atletico 
+Atletico
+Villarreal
+Villarreal
+21:15
+Elche
+Elche
+Real Betis
+Real Betis
+23:30
+Barca
+Barca
+Chủ nhật 18/10/2026
+Vòng 9
+Valencia
+Valencia
+02:00
+Athletic Club
+Athletic Club
+Osasuna
+Osasuna
+19:00
+Racing Santander
+Racing Santander
+Celta Vigo
+Celta Vigo
+21:15
+Alaves
+Alaves
+Malaga
+Malaga
+23:30
+Sociedad
+Sociedad
+Thứ hai 19/10/2026
+Vòng 9
+Real Madrid
+Real Madrid
+02:00
+Sevilla
+Sevilla
+Thứ ba 20/10/2026
+Vòng 9
+Getafe
+Getafe
+02:00
+Rayo Vallecano
+Rayo Vallecano
+Thứ năm 22/10/2026
+Vòng 6
+Levante
+Levante
+01:00
+Athletic Club
+Athletic Club
+Thứ bảy 24/10/2026
+Vòng 10
+Alaves
+Alaves
+02:00
+Malaga
+Malaga
+Rayo Vallecano
+Rayo Vallecano
+19:00
+Elche
+Elche
+Racing Santander
+Racing Santander
+21:15
+Espanyol
+Espanyol
+Valencia
+Valencia
+23:30
+Villarreal
+Villarreal
+Chủ nhật 25/10/2026
+Vòng 10
+Atletico
+Atletico 
+02:00
+Deportivo La Coruna
+Deportivo La Coruna
+Athletic Club
+Athletic Club
+20:00
+Getafe
+Getafe
+Celta Vigo
+Celta Vigo
+22:15
+Real Betis
+Real Betis
+Thứ hai 26/10/2026
+Vòng 10
+Sociedad
+Sociedad
+00:30
+Levante
+Levante
+Barca
+Barca
+03:00
+Real Madrid
+Real Madrid
+Thứ ba 27/10/2026
+Vòng 10
+Sevilla
+Sevilla
+03:00
+Osasuna
+Osasuna
+Thứ bảy 31/10/2026
+Vòng 11
+Villarreal
+Villarreal
+03:00
+Espanyol
+Espanyol
+Levante
+Levante
+20:00
+Atletico 
+Atletico
+Rayo Vallecano
+Rayo Vallecano
+22:15
+Celta Vigo
+Celta Vigo
+Chủ nhật 1/11/2026
+Vòng 11
+Real Betis
+Real Betis
+00:30
+Malaga
+Malaga
+Barca
+Barca
+03:00
+Alaves
+Alaves
+Getafe
+Getafe
+20:00
+Sevilla
+Sevilla
+Racing Santander
+Racing Santander
+22:15
+Real Madrid
+Real Madrid
+Thứ hai 2/11/2026
+Vòng 11
+Elche
+Elche
+00:30
+Valencia
+Valencia
+Athletic Club
+Athletic Club
+03:00
+Sociedad
+Sociedad
+Thứ ba 3/11/2026
+Vòng 11
+Deportivo La Coruna
+Deportivo La Coruna
+03:00
+Osasuna
+Osasuna
+Chủ nhật 8/11/2026
+Vòng 12
+Atletico
+Atletico 
+23:00
+Barca
+Barca
+Celta Vigo
+Celta Vigo
+23:00
+Levante
+Levante
+Elche
+Elche
+23:00
+Real Betis
+Real Betis
+Espanyol
+Espanyol
+23:00
+Deportivo La Coruna
+Deportivo La Coruna
+Malaga
+Malaga
+23:00
+Racing Santander
+Racing Santander
+Osasuna
+Osasuna
+23:00
+Athletic Club
+Athletic Club
+Sociedad
+Sociedad
+23:00
+Rayo Vallecano
+Rayo Vallecano
+Sevilla
+Sevilla
+23:00
+Alaves
+Alaves
+Valencia
+Valencia
+23:00
+Real Madrid
+Real Madrid
+Villarreal
+Villarreal
+23:00
+Getafe
+Getafe
+Chủ nhật 22/11/2026
+Vòng 13
+Alaves
+Alaves
+23:00
+Deportivo La Coruna
+Deportivo La Coruna
+Athletic Club
+Athletic Club
+23:00
+Espanyol
+Espanyol
+Barca
+Barca
+23:00
+Villarreal
+Villarreal
+Getafe
+Getafe
+23:00
+Atletico 
+Atletico
+Levante
+Levante
+23:00
+Elche
+Elche
+Osasuna
+Osasuna
+23:00
+Malaga
+Malaga
+Racing Santander
+Racing Santander
+23:00
+Sociedad
+Sociedad
+Rayo Vallecano
+Rayo Vallecano
+23:00
+Valencia
+Valencia
+Real Madrid
+Real Madrid
+23:00
+Celta Vigo
+Celta Vigo
+Sevilla
+Sevilla
+23:00
+Real Betis
+Real Betis
+Chủ nhật 29/11/2026
+Vòng 14
+Real Betis
+Real Betis
+23:00
+Rayo Vallecano
+Rayo Vallecano
+Celta Vigo
+Celta Vigo
+23:00
+Villarreal
+Villarreal
+Deportivo La Coruna
+Deportivo La Coruna
+23:00
+Barca
+Barca
+Elche
+Elche
+23:00
+Atletico 
+Atletico
+Espanyol
+Espanyol
+23:00
+Getafe
+Getafe
+Levante
+Levante
+23:00
+Racing Santander
+Racing Santander
+Malaga
+Malaga
+23:00
+Athletic Club
+Athletic Club
+Real Madrid
+Real Madrid
+23:00
+Alaves
+Alaves
+Sociedad
+Sociedad
+23:00
+Sevilla
+Sevilla
+Valencia
+Valencia
+23:00
+Osasuna
+Osasuna
+Chủ nhật 6/12/2026
+Vòng 15
+Alaves
+Alaves
+23:00
+Espanyol
+Espanyol
+Athletic Club
+Athletic Club
+23:00
+Real Madrid
+Real Madrid
+Atletico
+Atletico 
+23:00
+Real Betis
+Real Betis
+Barca
+Barca
+23:00
+Celta Vigo
+Celta Vigo
+Getafe
+Getafe
+23:00
+Valencia
+Valencia
+Osasuna
+Osasuna
+23:00
+Elche
+Elche
+Racing Santander
+Racing Santander
+23:00
+Deportivo La Coruna
+Deportivo La Coruna
+Rayo Vallecano
+Rayo Vallecano
+23:00
+Levante
+Levante
+Sevilla
+Sevilla
+23:00
+Malaga
+Malaga
+Villarreal
+Villarreal
+23:00
+Sociedad
+Sociedad
+Chủ nhật 13/12/2026
+Vòng 16
+Atletico
+Atletico 
+23:00
+Valencia
+Valencia
+Real Betis
+Real Betis
+23:00
+Racing Santander
+Racing Santander
+Deportivo La Coruna
+Deportivo La Coruna
+23:00
+Athletic Club
+Athletic Club
+Elche
+Elche
+23:00
+Sevilla
+Sevilla
+Espanyol
+Espanyol
+23:00
+Celta Vigo
+Celta Vigo
+Levante
+Levante
+23:00
+Alaves
+Alaves
+Malaga
+Malaga
+23:00
+Barca
+Barca
+Real Madrid
+Real Madrid
+23:00
+Osasuna
+Osasuna
+Sociedad
+Sociedad
+23:00
+Getafe
+Getafe
+Villarreal
+Villarreal
+23:00
+Rayo Vallecano
+Rayo Vallecano
+Chủ nhật 20/12/2026
+Vòng 17
+Alaves
+Alaves
+23:00
+Elche
+Elche
+Athletic Club
+Athletic Club
+23:00
+Real Betis
+Real Betis
+Barca
+Barca
+23:00
+Sociedad
+Sociedad
+Celta Vigo
+Celta Vigo
+23:00
+Atletico 
+Atletico
+Deportivo La Coruna
+Deportivo La Coruna
+23:00
+Real Madrid
+Real Madrid
+Getafe
+Getafe
+23:00
+Levante
+Levante
+Osasuna
+Osasuna
+23:00
+Villarreal
+Villarreal
+Rayo Vallecano
+Rayo Vallecano
+23:00
+Malaga
+Malaga
+Sevilla
+Sevilla
+23:00
+Racing Santander
+Racing Santander
+Valencia
+Valencia
+23:00
+Espanyol
+Espanyol
+Chủ nhật 3/1/2027
+Vòng 18
+Real Betis
+Real Betis
+23:00
+Alaves
+Alaves
+Celta Vigo
+Celta Vigo
+23:00
+Deportivo La Coruna
+Deportivo La Coruna
+Espanyol
+Espanyol
+23:00
+Barca
+Barca
+Levante
+Levante
+23:00
+Valencia
+Valencia
+Malaga
+Malaga
+23:00
+Elche
+Elche
+Racing Santander
+Racing Santander
+23:00
+Athletic Club
+Athletic Club
+Rayo Vallecano
+Rayo Vallecano
+23:00
+Atletico 
+Atletico
+Real Madrid
+Real Madrid
+23:00
+Getafe
+Getafe
+Sociedad
+Sociedad
+23:00
+Osasuna
+Osasuna
+Villarreal
+Villarreal
+23:00
+Sevilla
+Sevilla
+Chủ nhật 10/1/2027
+Vòng 19
+Alaves
+Alaves
+23:00
+Sociedad
+Sociedad
+Athletic Club
+Athletic Club
+23:00
+Villarreal
+Villarreal
+Atletico
+Atletico 
+23:00
+Racing Santander
+Racing Santander
+Deportivo La Coruna
+Deportivo La Coruna
+23:00
+Rayo Vallecano
+Rayo Vallecano
+Elche
+Elche
+23:00
+Getafe
+Getafe
+Espanyol
+Espanyol
+23:00
+Real Betis
+Real Betis
+Osasuna
+Osasuna
+23:00
+Barca
+Barca
+Real Madrid
+Real Madrid
+23:00
+Levante
+Levante
+Sevilla
+Sevilla
+23:00
+Celta Vigo
+Celta Vigo
+Valencia
+Valencia
+23:00
+Malaga
+Malaga
+Chủ nhật 17/1/2027
+Vòng 20
+Atletico
+Atletico 
+23:00
+Sociedad
+Sociedad
+Barca
+Barca
+23:00
+Elche
+Elche
+Real Betis
+Real Betis
+23:00
+Deportivo La Coruna
+Deportivo La Coruna
+Celta Vigo
+Celta Vigo
+23:00
+Valencia
+Valencia
+Getafe
+Getafe
+23:00
+Athletic Club
+Athletic Club
+Levante
+Levante
+23:00
+Espanyol
+Espanyol
+Malaga
+Malaga
+23:00
+Real Madrid
+Real Madrid
+Racing Santander
+Racing Santander
+23:00
+Osasuna
+Osasuna
+Rayo Vallecano
+Rayo Vallecano
+23:00
+Sevilla
+Sevilla
+Villarreal
+Villarreal
+23:00
+Alaves
+Alaves
+Chủ nhật 24/1/2027
+Vòng 21
+Alaves
+Alaves
+23:00
+Barca
+Barca
+Athletic Club
+Athletic Club
+23:00
+Levante
+Levante
+Deportivo La Coruna
+Deportivo La Coruna
+23:00
+Atletico 
+Atletico
+Elche
+Elche
+23:00
+Rayo Vallecano
+Rayo Vallecano
+Espanyol
+Espanyol
+23:00
+Villarreal
+Villarreal
+Getafe
+Getafe
+23:00
+Osasuna
+Osasuna
+Racing Santander
+Racing Santander
+23:00
+Celta Vigo
+Celta Vigo
+Real Madrid
+Real Madrid
+23:00
+Real Betis
+Real Betis
+Sociedad
+Sociedad
+23:00
+Malaga
+Malaga
+Valencia
+Valencia
+23:00
+Sevilla
+Sevilla
+Chủ nhật 31/1/2027
+Vòng 22
+Atletico
+Atletico 
+23:00
+Espanyol
+Espanyol
+Barca
+Barca
+23:00
+Valencia
+Valencia
+Real Betis
+Real Betis
+23:00
+Elche
+Elche
+Celta Vigo
+Celta Vigo
+23:00
+Getafe
+Getafe
+Levante
+Levante
+23:00
+Sociedad
+Sociedad
+Malaga
+Malaga
+23:00
+Alaves
+Alaves
+Osasuna
+Osasuna
+23:00
+Deportivo La Coruna
+Deportivo La Coruna
+Rayo Vallecano
+Rayo Vallecano
+23:00
+Real Madrid
+Real Madrid
+Sevilla
+Sevilla
+23:00
+Athletic Club
+Athletic Club
+Villarreal
+Villarreal
+23:00
+Racing Santander
+Racing Santander
+Chủ nhật 7/2/2027
+Vòng 23
+Alaves
+Alaves
+23:00
+Celta Vigo
+Celta Vigo
+Athletic Club
+Athletic Club
+23:00
+Osasuna
+Osasuna
+Barca
+Barca
+23:00
+Atletico 
+Atletico
+Real Betis
+Real Betis
+23:00
+Sevilla
+Sevilla
+Deportivo La Coruna
+Deportivo La Coruna
+23:00
+Malaga
+Malaga
+Elche
+Elche
+23:00
+Levante
+Levante
+Espanyol
+Espanyol
+23:00
+Rayo Vallecano
+Rayo Vallecano
+Getafe
+Getafe
+23:00
+Villarreal
+Villarreal
+Sociedad
+Sociedad
+23:00
+Real Madrid
+Real Madrid
+Valencia
+Valencia
+23:00
+Racing Santander
+Racing Santander
+Chủ nhật 14/2/2027
+Vòng 24
+Celta Vigo
+Celta Vigo
+23:00
+Rayo Vallecano
+Rayo Vallecano
+Elche
+Elche
+23:00
+Deportivo La Coruna
+Deportivo La Coruna
+Levante
+Levante
+23:00
+Malaga
+Malaga
+Osasuna
+Osasuna
+23:00
+Atletico 
+Atletico
+Racing Santander
+Racing Santander
+23:00
+Getafe
+Getafe
+Real Madrid
+Real Madrid
+23:00
+Athletic Club
+Athletic Club
+Sociedad
+Sociedad
+23:00
+Real Betis
+Real Betis
+Sevilla
+Sevilla
+23:00
+Espanyol
+Espanyol
+Valencia
+Valencia
+23:00
+Alaves
+Alaves
+Villarreal
+Villarreal
+23:00
+Barca
+Barca
+Chủ nhật 21/2/2027
+Vòng 25
+Alaves
+Alaves
+23:00
+Racing Santander
+Racing Santander
+Athletic Club
+Athletic Club
+23:00
+Celta Vigo
+Celta Vigo
+Atletico
+Atletico 
+23:00
+Elche
+Elche
+Barca
+Barca
+23:00
+Levante
+Levante
+Deportivo La Coruna
+Deportivo La Coruna
+23:00
+Sociedad
+Sociedad
+Espanyol
+Espanyol
+23:00
+Osasuna
+Osasuna
+Malaga
+Malaga
+23:00
+Real Betis
+Real Betis
+Rayo Vallecano
+Rayo Vallecano
+23:00
+Getafe
+Getafe
+Sevilla
+Sevilla
+23:00
+Real Madrid
+Real Madrid
+Villarreal
+Villarreal
+23:00
+Valencia
+Valencia
+Chủ nhật 28/2/2027
+Vòng 26
+Athletic Club
+Athletic Club
+23:00
+Barca
+Barca
+Real Betis
+Real Betis
+23:00
+Villarreal
+Villarreal
+Celta Vigo
+Celta Vigo
+23:00
+Espanyol
+Espanyol
+Getafe
+Getafe
+23:00
+Alaves
+Alaves
+Levante
+Levante
+23:00
+Deportivo La Coruna
+Deportivo La Coruna
+Malaga
+Malaga
+23:00
+Atletico 
+Atletico
+Osasuna
+Osasuna
+23:00
+Sevilla
+Sevilla
+Racing Santander
+Racing Santander
+23:00
+Rayo Vallecano
+Rayo Vallecano
+Real Madrid
+Real Madrid
+23:00
+Valencia
+Valencia
+Sociedad
+Sociedad
+23:00
+Elche
+Elche
+Chủ nhật 7/3/2027
+Vòng 27
+Alaves
+Alaves
+23:00
+Athletic Club
+Athletic Club
+Atletico
+Atletico 
+23:00
+Celta Vigo
+Celta Vigo
+Barca
+Barca
+23:00
+Real Betis
+Real Betis
+Deportivo La Coruna
+Deportivo La Coruna
+23:00
+Getafe
+Getafe
+Elche
+Elche
+23:00
+Malaga
+Malaga
+Espanyol
+Espanyol
+23:00
+Racing Santander
+Racing Santander
+Rayo Vallecano
+Rayo Vallecano
+23:00
+Osasuna
+Osasuna
+Sevilla
+Sevilla
+23:00
+Sociedad
+Sociedad
+Valencia
+Valencia
+23:00
+Levante
+Levante
+Villarreal
+Villarreal
+23:00
+Real Madrid
+Real Madrid
+Chủ nhật 14/3/2027
+Vòng 28
+Alaves
+Alaves
+23:00
+Sevilla
+Sevilla
+Athletic Club
+Athletic Club
+23:00
+Valencia
+Valencia
+Barca
+Barca
+23:00
+Deportivo La Coruna
+Deportivo La Coruna
+Real Betis
+Real Betis
+23:00
+Levante
+Levante
+Elche
+Elche
+23:00
+Villarreal
+Villarreal
+Getafe
+Getafe
+23:00
+Sociedad
+Sociedad
+Malaga
+Malaga
+23:00
+Rayo Vallecano
+Rayo Vallecano
+Osasuna
+Osasuna
+23:00
+Celta Vigo
+Celta Vigo
+Racing Santander
+Racing Santander
+23:00
+Atletico 
+Atletico
+Real Madrid
+Real Madrid
+23:00
+Espanyol
+Espanyol
+Chủ nhật 21/3/2027
+Vòng 29
+Atletico
+Atletico 
+23:00
+Getafe
+Getafe
+Celta Vigo
+Celta Vigo
+23:00
+Real Madrid
+Real Madrid
+Espanyol
+Espanyol
+23:00
+Athletic Club
+Athletic Club
+Levante
+Levante
+23:00
+Osasuna
+Osasuna
+Racing Santander
+Racing Santander
+23:00
+Real Betis
+Real Betis
+Rayo Vallecano
+Rayo Vallecano
+23:00
+Barca
+Barca
+Sociedad
+Sociedad
+23:00
+Alaves
+Alaves
+Sevilla
+Sevilla
+23:00
+Elche
+Elche
+Valencia
+Valencia
+23:00
+Deportivo La Coruna
+Deportivo La Coruna
+Villarreal
+Villarreal
+23:00
+Malaga
+Malaga
+Chủ nhật 4/4/2027
+Vòng 30
+Athletic Club
+Athletic Club
+22:00
+Racing Santander
+Racing Santander
+Barca
+Barca
+22:00
+Sevilla
+Sevilla
+Real Betis
+Real Betis
+22:00
+Celta Vigo
+Celta Vigo
+Deportivo La Coruna
+Deportivo La Coruna
+22:00
+Villarreal
+Villarreal
+Elche
+Elche
+22:00
+Alaves
+Alaves
+Getafe
+Getafe
+22:00
+Espanyol
+Espanyol
+Levante
+Levante
+22:00
+Rayo Vallecano
+Rayo Vallecano
+Malaga
+Malaga
+22:00
+Osasuna
+Osasuna
+Real Madrid
+Real Madrid
+22:00
+Atletico 
+Atletico
+Sociedad
+Sociedad
+22:00
+Valencia
+Valencia
+Chủ nhật 11/4/2027
+Vòng 31
+Alaves
+Alaves
+22:00
+Real Betis
+Real Betis
+Atletico
+Atletico 
+22:00
+Levante
+Levante
+Celta Vigo
+Celta Vigo
+22:00
+Elche
+Elche
+Espanyol
+Espanyol
+22:00
+Malaga
+Malaga
+Osasuna
+Osasuna
+22:00
+Real Madrid
+Real Madrid
+Racing Santander
+Racing Santander
+22:00
+Barca
+Barca
+Rayo Vallecano
+Rayo Vallecano
+22:00
+Sociedad
+Sociedad
+Sevilla
+Sevilla
+22:00
+Deportivo La Coruna
+Deportivo La Coruna
+Valencia
+Valencia
+22:00
+Getafe
+Getafe
+Villarreal
+Villarreal
+22:00
+Athletic Club
+Athletic Club
+Chủ nhật 18/4/2027
+Vòng 32
+Alaves
+Alaves
+22:00
+Rayo Vallecano
+Rayo Vallecano
+Atletico
+Atletico 
+22:00
+Sevilla
+Sevilla
+Barca
+Barca
+22:00
+Espanyol
+Espanyol
+Real Betis
+Real Betis
+22:00
+Athletic Club
+Athletic Club
+Deportivo La Coruna
+Deportivo La Coruna
+22:00
+Celta Vigo
+Celta Vigo
+Elche
+Elche
+22:00
+Osasuna
+Osasuna
+Getafe
+Getafe
+22:00
+Real Madrid
+Real Madrid
+Levante
+Levante
+22:00
+Villarreal
+Villarreal
+Malaga
+Malaga
+22:00
+Valencia
+Valencia
+Sociedad
+Sociedad
+22:00
+Racing Santander
+Racing Santander
+Thứ tư 21/4/2027
+Vòng 33
+Athletic Club
+Athletic Club
+22:00
+Deportivo La Coruna
+Deportivo La Coruna
+Celta Vigo
+Celta Vigo
+22:00
+Barca
+Barca
+Espanyol
+Espanyol
+22:00
+Sociedad
+Sociedad
+Getafe
+Getafe
+22:00
+Real Betis
+Real Betis
+Osasuna
+Osasuna
+22:00
+Alaves
+Alaves
+Racing Santander
+Racing Santander
+22:00
+Malaga
+Malaga
+Real Madrid
+Real Madrid
+22:00
+Elche
+Elche
+Sevilla
+Sevilla
+22:00
+Levante
+Levante
+Valencia
+Valencia
+22:00
+Rayo Vallecano
+Rayo Vallecano
+Villarreal
+Villarreal
+22:00
+Atletico 
+Atletico
+Chủ nhật 2/5/2027
+Vòng 34
+Atletico
+Atletico 
+22:00
+Alaves
+Alaves
+Barca
+Barca
+22:00
+Osasuna
+Osasuna
+Real Betis
+Real Betis
+22:00
+Valencia
+Valencia
+Celta Vigo
+Celta Vigo
+22:00
+Sevilla
+Sevilla
+Deportivo La Coruna
+Deportivo La Coruna
+22:00
+Racing Santander
+Racing Santander
+Elche
+Elche
+22:00
+Espanyol
+Espanyol
+Levante
+Levante
+22:00
+Real Madrid
+Real Madrid
+Malaga
+Malaga
+22:00
+Getafe
+Getafe
+Rayo Vallecano
+Rayo Vallecano
+22:00
+Villarreal
+Villarreal
+Sociedad
+Sociedad
+22:00
+Athletic Club
+Athletic Club
+Chủ nhật 9/5/2027
+Vòng 35
+Alaves
+Alaves
+22:00
+Levante
+Levante
+Athletic Club
+Athletic Club
+22:00
+Malaga
+Malaga
+Real Betis
+Real Betis
+22:00
+Espanyol
+Espanyol
+Getafe
+Getafe
+22:00
+Elche
+Elche
+Osasuna
+Osasuna
+22:00
+Sociedad
+Sociedad
+Racing Santander
+Racing Santander
+22:00
+Sevilla
+Sevilla
+Rayo Vallecano
+Rayo Vallecano
+22:00
+Deportivo La Coruna
+Deportivo La Coruna
+Real Madrid
+Real Madrid
+22:00
+Barca
+Barca
+Valencia
+Valencia
+22:00
+Atletico 
+Atletico
+Villarreal
+Villarreal
+22:00
+Celta Vigo
+Celta Vigo
+Chủ nhật 16/5/2027
+Vòng 36
+Atletico
+Atletico 
+22:00
+Rayo Vallecano
+Rayo Vallecano
+Deportivo La Coruna
+Deportivo La Coruna
+22:00
+Alaves
+Alaves
+Elche
+Elche
+22:00
+Athletic Club
+Athletic Club
+Espanyol
+Espanyol
+22:00
+Valencia
+Valencia
+Levante
+Levante
+22:00
+Getafe
+Getafe
+Malaga
+Malaga
+22:00
+Celta Vigo
+Celta Vigo
+Osasuna
+Osasuna
+22:00
+Real Betis
+Real Betis
+Real Madrid
+Real Madrid
+22:00
+Racing Santander
+Racing Santander
+Sociedad
+Sociedad
+22:00
+Barca
+Barca
+Sevilla
+Sevilla
+22:00
+Villarreal
+Villarreal
+Chủ nhật 23/5/2027
+Vòng 37
+Alaves
+Alaves
+22:00
+Real Madrid
+Real Madrid
+Atletico
+Atletico 
+22:00
+Athletic Club
+Athletic Club
+Barca
+Barca
+22:00
+Malaga
+Malaga
+Celta Vigo
+Celta Vigo
+22:00
+Sociedad
+Sociedad
+Deportivo La Coruna
+Deportivo La Coruna
+22:00
+Espanyol
+Espanyol
+Racing Santander
+Racing Santander
+22:00
+Levante
+Levante
+Rayo Vallecano
+Rayo Vallecano
+22:00
+Real Betis
+Real Betis
+Sevilla
+Sevilla
+22:00
+Getafe
+Getafe
+Valencia
+Valencia
+22:00
+Elche
+Elche
+Villarreal
+Villarreal
+22:00
+Osasuna
+Osasuna
+Chủ nhật 30/5/2027
+Vòng 38
+Athletic Club
+Athletic Club
+22:00
+Rayo Vallecano
+Rayo Vallecano
+Real Betis
+Real Betis
+22:00
+Atletico 
+Atletico
+Elche
+Elche
+22:00
+Racing Santander
+Racing Santander
+Espanyol
+Espanyol
+22:00
+Alaves
+Alaves
+Getafe
+Getafe
+22:00
+Barca
+Barca
+Levante
+Levante
+22:00
+Celta Vigo
+Celta Vigo
+Malaga
+Malaga
+22:00
+Sevilla
+Sevilla
+Osasuna
+Osasuna
+22:00
+Valencia
+Valencia
+Real Madrid
+Real Madrid
+22:00
+Deportivo La Coruna
+Deportivo La Coruna
+Sociedad
+Sociedad
+22:00
+Villarreal
+Villarreal

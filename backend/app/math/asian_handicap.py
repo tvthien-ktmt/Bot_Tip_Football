@@ -96,9 +96,10 @@ def calculate_ah_probabilities(
         p_half_loss /= total
         p_loss /= total
 
-    # Effective win probability accounting for pushes and half bets
-    # In betting math, effective win probability for comparison with decimal odds
-    eff_prob = p_win + 0.5 * p_half_win + (0.5 * p_push if p_push > 0 else 0.0)
+    # Effective win probability for comparison with de-vigged market odds.
+    # Push = refund (neutral), so it is NOT included in effective probability.
+    # Ref: Pinnacle / academic convention: eff = P(W) + 0.5 * P(HW)
+    eff_prob = p_win + 0.5 * p_half_win
 
     return {
         "p_win": float(p_win),
@@ -205,7 +206,8 @@ def calculate_ou_probabilities(
         p_half_loss /= total
         p_loss /= total
 
-    eff_prob = p_win + 0.5 * p_half_win + (0.5 * p_push if p_push > 0 else 0.0)
+    # Push = refund (neutral), excluded from effective probability.
+    eff_prob = p_win + 0.5 * p_half_win
 
     return {
         "p_win": float(p_win),
