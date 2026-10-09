@@ -113,18 +113,76 @@ class MatchPredictor:
                 a_sot_avg = float(a_hist.apply(lambda r: r.get("HST", 4.0) if r.get("home_team") == a_team else r.get("AST", 3.5), axis=1).mean())
                 a_corners_avg = float(a_hist.apply(lambda r: r.get("HC", 5.0) if r.get("home_team") == a_team else r.get("AC", 4.2), axis=1).mean())
                 a_corners_def = float(a_hist.apply(lambda r: r.get("AC", 4.5) if r.get("home_team") == a_team else r.get("HC", 5.0), axis=1).mean())
-            if referee != "Unknown":
+            if referee != "Unknown" and "referee" in historical_matches.columns:
                 ref_hist = historical_matches[historical_matches["referee"] == referee].tail(25)
-                if len(ref_hist) >= 3:
+                if len(ref_hist) >= 3 and "HY" in ref_hist.columns and "AY" in ref_hist.columns:
                     referee_cards_avg = float((ref_hist["HY"] + ref_hist["AY"]).mean())
 
-        # 3. Model Probabilities
-        # 1X2
-        p_h_stat = float(np.sum(np.tril(score_matrix, -1)))
-        p_d_stat = float(np.sum(np.diag(score_matrix)))
-        p_a_stat = float(np.sum(np.triu(score_matrix, 1)))
+        # 3. Model Probabilities & Statistical Ensemble
+        # Fit live Dixon-Coles M2 and compute Pi-Ratings M3 from historical matches
+        p_dc_1x2 = [0.42, 0.28, 0.30]
+        p_pi_1x2 = [0.42, 0.28, 0.30]
 
-        p_1x2_final, has_edge_1x2 = self.ensemble.pool_1x2(fair_1x2_mkt, [p_h_stat, p_d_stat, p_a_stat])
+        if historical_matches is not None and not historical_matches.empty:
+            div_mask = (historical_matches["Div"] == league_div) if "Div" in historical_matches.columns else pd.Series(True, index=historical_matches.index)
+            fthg_mask = historical_matches["FTHG"].notna() if "FTHG" in historical_matches.columns else pd.Series(False, index=historical_matches.index)
+            ftag_mask = historical_matches["FTAG"].notna() if "FTAG" in historical_matches.columns else pd.Series(False, index=historical_matches.index)
+            l_hist = historical_matches[div_mask & fthg_mask & ftag_mask]
+            if len(l_hist) >= 20:
+                # 3a. Fit Dixon-Coles MLE (M2) with time-decay xi
+                try:
+                    self.dc_model.fit(l_hist.tail(120), xi=0.0019)
+                    h_rat = self.dc_model.team_ratings.get(h_team, {"attack": 1.05, "defence": 1.0})
+                    a_rat = self.dc_model.team_ratings.get(a_team, {"attack": 0.95, "defence": 1.0})
+                    exp_h_dc, exp_a_dc = self.dc_model.compute_expected_goals(
+                        h_rat["attack"], h_rat["defence"], a_rat["attack"], a_rat["defence"], self.dc_model.home_adv
+                    )
+                    mat_dc = self.dc_model.score_matrix(exp_h_dc, exp_a_dc, rho=self.dc_model.rho)
+                    p_dc_1x2 = [
+                        float(np.sum(np.tril(mat_dc, -1))),
+                        float(np.sum(np.diag(mat_dc))),
+                        float(np.sum(np.triu(mat_dc, 1)))
+                    ]
+                except Exception as e:
+                    logger.debug(f"DC live fit fallback: {e}")
+
+                # 3b. Calculate Pi-Ratings (M3 - Constantinou & Fenton 2013)
+                try:
+                    pi_sys = PiRatingSystem(c=3.0, learning_rate=0.07, cross_weight=0.35)
+                    pi_dict: Dict[str, List[float]] = {}
+                    for _, p_row in l_hist.tail(80).iterrows():
+                        ht_p = str(p_row["home_team"])
+                        at_p = str(p_row["away_team"])
+                        if ht_p not in pi_dict: pi_dict[ht_p] = [0.0, 0.0]
+                        if at_p not in pi_dict: pi_dict[at_p] = [0.0, 0.0]
+                        r_hh, r_ha = pi_dict[ht_p]
+                        r_ah, r_aa = pi_dict[at_p]
+                        n_hh, n_ha, n_ah, n_aa = pi_sys.update(
+                            r_hh, r_ha, r_ah, r_aa, int(p_row["FTHG"]), int(p_row["FTAG"])
+                        )
+                        pi_dict[ht_p] = [n_hh, n_ha]
+                        pi_dict[at_p] = [n_ah, n_aa]
+
+                    r_h_home = pi_dict.get(h_team, [0.0, 0.0])[0]
+                    r_a_away = pi_dict.get(a_team, [0.0, 0.0])[1]
+                    pi_gd = pi_sys.expected_goal_diff(r_h_home, r_a_away)
+                    from backend.app.math.ratings import SkellamGoalDifferenceModel
+                    skellam = SkellamGoalDifferenceModel(league_avg_total=2.70)
+                    p_pi_1x2 = list(skellam.compute_1x2_from_expected_gd(pi_gd))
+                except Exception as e:
+                    logger.debug(f"Pi-ratings live calculation fallback: {e}")
+
+        # Combine independent statistical models M2 (70%) + M3 (30%)
+        p_stat_model_1x2 = [
+            0.70 * p_dc_1x2[0] + 0.30 * p_pi_1x2[0],
+            0.70 * p_dc_1x2[1] + 0.30 * p_pi_1x2[1],
+            0.70 * p_dc_1x2[2] + 0.30 * p_pi_1x2[2]
+        ]
+        sum_stat = sum(p_stat_model_1x2)
+        p_stat_model_1x2 = [p / sum_stat for p in p_stat_model_1x2]
+
+        # Log-Linear Ensemble (M8): Pool statistical model against market fair prior
+        p_1x2_final, has_edge_1x2 = self.ensemble.pool_1x2(fair_1x2_mkt, p_stat_model_1x2)
 
         # Over / Under
         ou_lines = [1.5, 2.0, 2.25, 2.5, 2.75, 3.0, 3.5]
@@ -300,7 +358,8 @@ class MatchPredictor:
                 "away": round(exp_goals_a, 3),
                 "total": round(exp_goals_h + exp_goals_a, 3),
                 "source_breakdown": {
-                    "m2_dixon_coles": [round(exp_goals_h, 2), round(exp_goals_a, 2)],
+                    "m2_dixon_coles": [round(exp_h_dc if 'exp_h_dc' in locals() else exp_goals_h, 2), round(exp_a_dc if 'exp_a_dc' in locals() else exp_goals_a, 2)],
+                    "m3_pi_ratings_1x2": [round(p, 4) for p in p_pi_1x2],
                     "m5_shot_xg": [round(h_sot_avg * 0.32, 2), round(a_sot_avg * 0.32, 2)],
                     "m6_market_implied": [round(exp_goals_h, 2), round(exp_goals_a, 2)]
                 }

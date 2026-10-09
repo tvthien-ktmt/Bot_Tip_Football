@@ -47,13 +47,41 @@ class CornersModel:
         s = np.sum(pmf)
         return pmf / s if s > 0 else pmf
 
+    def generate_bivariate_poisson_corner_matrix(
+        self,
+        exp_home: float,
+        exp_away: float,
+        covariance_lambda3: float = 0.65,
+        max_corners: int = 18
+    ) -> np.ndarray:
+        """
+        Generates corner joint probability matrix using Bivariate Poisson
+        (Yip & Zou 2021 arXiv:2112.13001).
+        Models match tempo common shock: X_c = X1 + X3, Y_c = X2 + X3 where X3 ~ Poisson(lambda_3).
+        """
+        from backend.app.math.bivariate_poisson import BivariatePoissonModel
+        cov = max(0.01, min(covariance_lambda3, min(exp_home, exp_away) * 0.4))
+        l1 = max(0.2, exp_home - cov)
+        l2 = max(0.2, exp_away - cov)
+        bp = BivariatePoissonModel(lambda_3=cov)
+        return bp.score_matrix(l1, l2, lambda_3=cov, max_goals=max_corners)
+
     def generate_corner_matrix(
         self,
         exp_home: float,
         exp_away: float,
-        max_corners: int = 18
+        max_corners: int = 18,
+        method: str = "bivariate_poisson"
     ) -> np.ndarray:
-        """Generates joint probability matrix for corners (0..18 x 0..18) using Negative Binomial."""
+        """
+        Generates joint probability matrix for corners (0..max_corners x 0..max_corners).
+        Supports:
+        - 'bivariate_poisson': Yip & Zou (2021) arXiv:2112.13001 common tempo shock model.
+        - 'negative_binomial': Overdispersed marginal product with empirical dispersion factor.
+        """
+        if method == "bivariate_poisson":
+            return self.generate_bivariate_poisson_corner_matrix(exp_home, exp_away, max_corners=max_corners)
+
         h_probs = self._nbinom_pmf_series(exp_home, self.dispersion_factor, max_corners)
         a_probs = self._nbinom_pmf_series(exp_away, self.dispersion_factor, max_corners)
 
