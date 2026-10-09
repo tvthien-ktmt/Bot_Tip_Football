@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react";
 import MatchCard from "@/components/MatchCard";
+import DemoBanner from "@/components/DemoBanner";
 import { MatchCard as MatchCardType } from "@/lib/types";
-import { fetchFixtures } from "@/lib/api";
+import { fetchFixtures, getIsDemoData } from "@/lib/api";
 import { Search, Filter, ShieldCheck, Activity, Award, CheckCircle2, AlertCircle } from "lucide-react";
 
 export default function DashboardPage() {
   const [fixtures, setFixtures] = useState<MatchCardType[]>([]);
+  const [isDemo, setIsDemo] = useState(false);
   const [loading, setLoading] = useState(true);
   const [selectedLeague, setSelectedLeague] = useState<string>("ALL");
   const [tipFilter, setTipFilter] = useState<"ALL" | "TIPS_ONLY" | "NO_BET">("ALL");
@@ -19,8 +21,10 @@ export default function DashboardPage() {
       try {
         const data = await fetchFixtures(selectedLeague);
         setFixtures(data);
+        setIsDemo(getIsDemoData());
       } catch (err) {
         console.error("Error loading fixtures:", err);
+        setIsDemo(true);
       } finally {
         setLoading(false);
       }
@@ -52,6 +56,7 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-8">
+      <DemoBanner show={isDemo} />
       {/* Top Banner & Philosophy */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-950/40 border border-slate-800 p-6 sm:p-8 shadow-2xl">
         <div className="relative z-10 max-w-3xl space-y-3">

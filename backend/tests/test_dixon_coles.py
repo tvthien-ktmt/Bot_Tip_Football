@@ -40,3 +40,47 @@ def test_dixon_coles_rho_effect():
 
     # Total sum must still be 1.0
     assert np.sum(dc_mat) == pytest.approx(1.0, abs=1e-5)
+
+
+def test_dixon_coles_fit_2n_plus_1():
+    """Verify 2n+1 parameter allocation, attack sum=0 constraint, distinct team ratings, and valid rho/tau."""
+    import pandas as pd
+    teams = ["TeamA", "TeamB", "TeamC", "TeamD", "TeamE", "TeamF"]
+    records = []
+    # Create round-robin matches (30 matches)
+    for i, h in enumerate(teams):
+        for j, a in enumerate(teams):
+            if h != a:
+                records.append({
+                    "Date": "01/09/2025",
+                    "home_team": h,
+                    "away_team": a,
+                    "FTHG": (i + 1) % 4,
+                    "FTAG": (j + 2) % 3,
+                })
+    df = pd.DataFrame(records)
+
+    dc = DixonColesModel()
+    dc.fit(df)
+
+    # 1. Assert all 6 teams have ratings
+    assert len(dc.team_ratings) == 6
+
+    # 2. Assert sum of log(attack) constraint equals 0
+    log_attacks = [np.log(v["attack"]) for v in dc.team_ratings.values()]
+    assert abs(np.sum(log_attacks)) < 1e-4
+
+    # 3. Assert teams have distinct attack and defence ratings
+    attacks = [v["attack"] for v in dc.team_ratings.values()]
+    defences = [v["defence"] for v in dc.team_ratings.values()]
+    assert len(set([round(a, 3) for a in attacks])) > 1
+    assert len(set([round(d, 3) for d in defences])) > 1
+
+    # 4. Assert rho in [-0.15, 0.15]
+    assert -0.15 <= dc.rho <= 0.15
+
+    # 5. Assert tau multipliers are strictly non-negative
+    for x in range(3):
+        for y in range(3):
+            tau = dc.tau_adjustment(x, y, 1.4, 1.1)
+            assert tau >= 0.0

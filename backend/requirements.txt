@@ -11,4 +11,6 @@ lightgbm>=4.5.0
 rapidfuzz>=3.10.0
 httpx>=0.28.0
 apscheduler>=3.10.0
+pyarrow>=17.0.0
+statsmodels>=0.14.0
 pytest>=8.0.0

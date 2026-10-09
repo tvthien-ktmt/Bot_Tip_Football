@@ -111,3 +111,8 @@ def test_ah_ev_calculation():
     # If 100% half-loss: loss is -0.5 -> EV = -0.5
     probs_hl = {"p_win": 0.0, "p_half_win": 0.0, "p_push": 0.0, "p_half_loss": 1.0, "p_loss": 0.0}
     assert calculate_ah_ev(probs_hl, 2.0) == pytest.approx(-0.5)
+
+    # Golden Test from spec: breakdown {win 0.5, hl 0.25, loss 0.25} @ 2.0 = +0.125
+    # EV = 0.5*(2-1) + 0*0 + 0*0 - 0.25*0.5 - 0.25*1.0 = 0.5 - 0.125 - 0.25 = 0.125
+    probs_spec = {"p_win": 0.5, "p_half_win": 0.0, "p_push": 0.0, "p_half_loss": 0.25, "p_loss": 0.25}
+    assert abs(calculate_ah_ev(probs_spec, 2.0) - 0.125) < 1e-9

@@ -101,3 +101,21 @@ def test_league_transition_manager():
     r_gw10 = LeagueTransitionManager.apply_early_season_regression_to_mean(1650.0, 1500.0, matchweek=10)
     assert r_gw1 < r_gw5 < r_gw10
     assert r_gw10 == 1650.0  # No regression after week 5
+
+
+def test_cards_whole_line_push_exclusion():
+    """Verify that on whole card lines (e.g. 3.0), P(under win) equals P(X <= 2), not P(X <= 3)."""
+    from scipy.stats import poisson
+    from backend.app.math.corners_cards import CardsModel
+
+    exp_cards = 3.75
+    line = 3.0
+    res = CardsModel.calculate_card_ou_probs(exp_cards=exp_cards, line=line)
+
+    expected_p_under_win = float(poisson.cdf(2, exp_cards))
+    expected_p_push = float(poisson.pmf(3, exp_cards))
+
+    assert res["p_win_under"] == pytest.approx(expected_p_under_win, abs=1e-4)
+    assert res["p_push"] == pytest.approx(expected_p_push, abs=1e-4)
+    # Ensure P(push) is strictly not included in p_win_under
+    assert res["p_win_under"] < float(poisson.cdf(3, exp_cards)) - 0.05

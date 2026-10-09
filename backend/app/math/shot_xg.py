@@ -17,11 +17,12 @@ class ShotBasedXGProxy:
 
     def __init__(self, alpha_ema: float = 0.15):
         self.alpha_ema = alpha_ema
-        # Coefficients learned from historical baseline:
-        # Typical goal probability per SOT is ~0.30 - 0.35; per off-target shot is ~0.02 - 0.04
+        # Coefficients for fallback linear heuristic:
         self.beta_sot = 0.315
         self.beta_shot_off = 0.032
         self.beta_intercept = 0.08
+        self.beta_home = 0.15
+        self.is_glm_fitted = False
         self.team_shot_ratings: Dict[str, Dict[str, float]] = {}
 
     def fit_glm_coefficients(self, df: pd.DataFrame) -> "ShotBasedXGProxy":
@@ -48,20 +49,23 @@ class ShotBasedXGProxy:
 
         try:
             X = comb[["sot", "off", "is_home"]]
-            X = sm_add_constant = np.column_stack([np.ones(len(comb)), X.values])
+            X = np.column_stack([np.ones(len(comb)), X.values])
             y = comb["goals"].values
             glm = GLM(y, X, family=Poisson())
             res = glm.fit(disp=False)
-            # Link is log, so expected goals = exp(b0 + b1*sot + b2*off + b3*home)
-            # Or identity-based approximation
+            # Link is log: E[goals] = exp(b0 + b1*sot + b2*off + b3*home)
             self.beta_intercept = float(res.params[0])
             self.beta_sot = float(res.params[1])
             self.beta_shot_off = float(res.params[2])
+            self.beta_home = float(res.params[3])
+            self.is_glm_fitted = True
         except Exception:
-            # Safe defaults
+            # Safe linear fallback defaults
             self.beta_sot = 0.315
             self.beta_shot_off = 0.032
             self.beta_intercept = 0.08
+            self.beta_home = 0.15
+            self.is_glm_fitted = False
 
         return self
 
@@ -69,10 +73,18 @@ class ShotBasedXGProxy:
         """Estimate single-match xG from shot profile."""
         sot_val = max(0.0, sot)
         off_val = max(0.0, shots - sot)
-        home_bonus = 0.15 if is_home else 0.0
-        # Direct expected goals proxy
-        xg = self.beta_intercept + self.beta_sot * sot_val + self.beta_shot_off * off_val + home_bonus
-        return float(max(0.15, xg))
+        home_val = 1.0 if is_home else 0.0
+
+        if self.is_glm_fitted:
+            # Poisson log link: E[goals] = exp(b0 + b1*sot + b2*off + b3*home)
+            log_eta = self.beta_intercept + self.beta_sot * sot_val + self.beta_shot_off * off_val + self.beta_home * home_val
+            xg = float(np.exp(np.clip(log_eta, -2.5, 2.5)))
+        else:
+            # Direct linear heuristic proxy
+            home_bonus = self.beta_home if is_home else 0.0
+            xg = self.beta_intercept + self.beta_sot * sot_val + self.beta_shot_off * off_val + home_bonus
+
+        return float(max(0.15, min(7.0, xg)))
 
     def update_team_ratings(self, df_chronological: pd.DataFrame) -> Dict[str, Dict[str, float]]:
         """

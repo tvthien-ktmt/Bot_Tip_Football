@@ -2,10 +2,15 @@ import pytest
 from fastapi.testclient import TestClient
 from backend.app.main import app
 
-client = TestClient(app)
+
+@pytest.fixture(scope="module")
+def client():
+    """Context manager ensures FastAPI lifespan creates DB tables and runs startup tasks."""
+    with TestClient(app) as c:
+        yield c
 
 
-def test_api_health():
+def test_api_health(client):
     response = client.get("/api/health")
     assert response.status_code == 200
     data = response.json()
@@ -13,7 +18,7 @@ def test_api_health():
     assert "KèoLab" in data["service"]
 
 
-def test_api_leagues():
+def test_api_leagues(client):
     response = client.get("/api/leagues")
     assert response.status_code == 200
     data = response.json()
@@ -23,7 +28,7 @@ def test_api_leagues():
     assert "SP1" in codes
 
 
-def test_api_fixtures():
+def test_api_fixtures(client):
     response = client.get("/api/fixtures")
     assert response.status_code == 200
     data = response.json()
@@ -34,7 +39,7 @@ def test_api_fixtures():
     assert "league" in first
 
 
-def test_api_match_analysis():
+def test_api_match_analysis(client):
     fixtures_res = client.get("/api/fixtures")
     assert fixtures_res.status_code == 200
     fixtures = fixtures_res.json()
@@ -53,7 +58,7 @@ def test_api_match_analysis():
     assert len(data["score_matrix"]["matrix"]) == 7
 
 
-def test_api_performance():
+def test_api_performance(client):
     res = client.get("/api/performance")
     assert res.status_code == 200
     data = res.json()
@@ -63,7 +68,7 @@ def test_api_performance():
     assert "by_confidence" in data
 
 
-def test_api_odds_history():
+def test_api_odds_history(client):
     fixtures_res = client.get("/api/fixtures")
     fixtures = fixtures_res.json()
     match_id = fixtures[0]["id"]
@@ -74,7 +79,7 @@ def test_api_odds_history():
     assert isinstance(history, list)
 
 
-def test_api_tips():
+def test_api_tips(client):
     res = client.get("/api/tips")
     assert res.status_code == 200
     tips = res.json()
@@ -84,7 +89,7 @@ def test_api_tips():
         assert tip["edge"] >= 0.025 # Must satisfy edge threshold
 
 
-def test_api_admin_injury():
+def test_api_admin_injury(client):
     res = client.post("/api/admin/injury", json={
         "team_name": "Arsenal",
         "player_name": "Bukayo Saka",
@@ -95,4 +100,3 @@ def test_api_admin_injury():
     data = res.json()
     assert data["status"] == "success"
     assert "Bukayo Saka" in data["message"]
-

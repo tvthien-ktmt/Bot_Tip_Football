@@ -120,8 +120,9 @@ class DixonColesModel:
 
         # Initial parameters:
         # log_attack (n_teams - 1), log_defence (n_teams), log_home_adv (1), rho (1)
+        # Total parameters = (n_teams - 1) + n_teams + 1 + 1 = 2 * n_teams + 1
         # We enforce sum(attack) = 0 by setting attack[n-1] = -sum(attack[0:n-1])
-        x0 = np.zeros(2 * n_teams)  # attack (n-1), defence (n), home_adv (1), rho
+        x0 = np.zeros(2 * n_teams + 1)  # attack (n-1), defence (n), home_adv (1), rho (1)
         x0[-2] = 0.25  # log home advantage ~ 1.28
         x0[-1] = -0.05  # initial rho
 
@@ -159,7 +160,8 @@ class DixonColesModel:
             log_lik = weights * (log_pmf_h + log_pmf_a + np.log(tau_vals))
             return -np.sum(log_lik)
 
-        res = minimize(loss_func, x0, method="L-BFGS-B", options={"maxiter": 80, "disp": False})
+        res = minimize(loss_func, x0, method="L-BFGS-B", options={"maxiter": 500, "disp": False})
+        assert len(res.x) == 2 * n_teams + 1, f"Expected 2*n+1 parameters, got {len(res.x)}"
 
         opt_att = np.zeros(n_teams)
         opt_att[:-1] = res.x[: n_teams - 1]

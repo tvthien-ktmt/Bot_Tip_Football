@@ -97,6 +97,7 @@ class MatchPredictor:
         # 2. Team Historical Context (Shots, Corners, Cards, Form)
         h_sot_avg, a_sot_avg = 4.8, 3.9
         h_corners_avg, a_corners_avg = 5.6, 4.4
+        h_corners_def, a_corners_def = 4.8, 5.2
         referee_cards_avg = 3.8
         sample_depth = 15
 
@@ -106,8 +107,12 @@ class MatchPredictor:
             if len(h_hist) >= 5:
                 sample_depth = min(len(h_hist), len(a_hist))
                 h_sot_avg = float(h_hist.apply(lambda r: r.get("HST", 4.0) if r.get("home_team") == h_team else r.get("AST", 3.5), axis=1).mean())
+                h_corners_avg = float(h_hist.apply(lambda r: r.get("HC", 5.2) if r.get("home_team") == h_team else r.get("AC", 4.2), axis=1).mean())
+                h_corners_def = float(h_hist.apply(lambda r: r.get("AC", 4.5) if r.get("home_team") == h_team else r.get("HC", 5.0), axis=1).mean())
             if len(a_hist) >= 5:
                 a_sot_avg = float(a_hist.apply(lambda r: r.get("HST", 4.0) if r.get("home_team") == a_team else r.get("AST", 3.5), axis=1).mean())
+                a_corners_avg = float(a_hist.apply(lambda r: r.get("HC", 5.0) if r.get("home_team") == a_team else r.get("AC", 4.2), axis=1).mean())
+                a_corners_def = float(a_hist.apply(lambda r: r.get("AC", 4.5) if r.get("home_team") == a_team else r.get("HC", 5.0), axis=1).mean())
             if referee != "Unknown":
                 ref_hist = historical_matches[historical_matches["referee"] == referee].tail(25)
                 if len(ref_hist) >= 3:
@@ -145,7 +150,12 @@ class MatchPredictor:
             }
 
         # Corners
-        exp_c_h, exp_c_a = self.corners_model.compute_expected_corners(h_corners_avg, 5.0, a_corners_avg, 5.0)
+        exp_c_h, exp_c_a = self.corners_model.compute_expected_corners(
+            home_corner_atk=h_corners_avg,
+            home_corner_def=h_corners_def,
+            away_corner_atk=a_corners_avg,
+            away_corner_def=a_corners_def
+        )
         c_matrix = self.corners_model.generate_corner_matrix(exp_c_h, exp_c_a)
         c_ou = self.corners_model.extract_corner_ou(c_matrix)
 
@@ -165,13 +175,20 @@ class MatchPredictor:
         # AH Evaluation if line available
         if pd.notna(ah_line) and pd.notna(ah_h) and ah_h > 1.01:
             line_val = float(ah_line)
+            ah_raw_probs = calculate_ah_probabilities(score_matrix, line_val)
+            if pd.notna(ah_a) and float(ah_a) > 1.01:
+                fair_ah_p = get_fair_probabilities([float(ah_h), float(ah_a)], method="shin")[0]
+            else:
+                fair_ah_p = 0.50
+
             ah_cand = self.tip_engine.evaluate_market_selection(
                 market="AH",
                 selection=f"Home {line_val}",
                 line=line_val,
                 odds=float(ah_h),
-                model_prob=probs_ah.get(str(line_val), {}).get("win", 0.5) + 0.5 * probs_ah.get(str(line_val), {}).get("half_win", 0.0),
-                fair_prob=0.50,
+                model_prob=ah_raw_probs["effective_win_prob"],
+                fair_prob=fair_ah_p,
+                ah_probs=ah_raw_probs,
                 context_stats=ctx,
                 sample_size=sample_depth
             )

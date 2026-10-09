@@ -2,6 +2,11 @@ import { MatchCard, MatchAnalysis, PerformanceStats } from "./types";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
 
+export let isDemoData = false;
+export function getIsDemoData(): boolean {
+  return isDemoData;
+}
+
 export async function fetchFixtures(league?: string): Promise<MatchCard[]> {
   try {
     const url = league && league !== "ALL" 
@@ -9,9 +14,11 @@ export async function fetchFixtures(league?: string): Promise<MatchCard[]> {
       : `${API_BASE}/fixtures`;
     const res = await fetch(url, { next: { revalidate: 30 } });
     if (!res.ok) throw new Error("Failed to fetch fixtures");
+    isDemoData = false;
     return await res.json();
   } catch (err) {
     console.warn("Backend not reached, using fallback sample fixtures:", err);
+    isDemoData = true;
     return getFallbackFixtures();
   }
 }
@@ -20,9 +27,11 @@ export async function fetchMatchAnalysis(id: number): Promise<MatchAnalysis> {
   try {
     const res = await fetch(`${API_BASE}/matches/${id}/analysis`, { next: { revalidate: 30 } });
     if (!res.ok) throw new Error("Failed to fetch match analysis");
+    isDemoData = false;
     return await res.json();
   } catch (err) {
     console.warn(`Backend not reached for match ${id}, using fallback analysis:`, err);
+    isDemoData = true;
     return getFallbackAnalysis(id);
   }
 }
@@ -31,23 +40,25 @@ export async function fetchPerformance(): Promise<PerformanceStats> {
   try {
     const res = await fetch(`${API_BASE}/performance`, { next: { revalidate: 60 } });
     if (!res.ok) throw new Error("Failed to fetch performance");
+    isDemoData = false;
     return await res.json();
   } catch (err) {
     console.warn("Backend not reached for performance, using fallback stats:", err);
+    isDemoData = true;
     return getFallbackPerformance();
   }
 }
 
-// Fallback datasets for immediate client demonstration
+// Fallback datasets for immediate client demonstration with explicitly fictitious team names
 function getFallbackFixtures(): MatchCard[] {
   return [
     {
       id: 308,
-      league: { id: 1, code: "E0", name: "Premier League", country: "England" },
+      league: { id: 1, code: "E0", name: "Demo Premier League", country: "England" },
       date: new Date(Date.now() + 4 * 3600000).toISOString(),
       status: "SCHEDULED",
-      home_team: { id: 1, name: "Arsenal", short_name: "ARS", code: "ARS", elo: 1820 },
-      away_team: { id: 4, name: "Chelsea", short_name: "CHE", code: "CHE", elo: 1720 },
+      home_team: { id: 1, name: "Demo United", short_name: "DEM", code: "DEM", elo: 1820 },
+      away_team: { id: 4, name: "Synthetic City", short_name: "SYN", code: "SYN", elo: 1720 },
       b365_home_odds: 1.72,
       b365_draw_odds: 3.90,
       b365_away_odds: 4.60,
@@ -57,7 +68,7 @@ function getFallbackFixtures(): MatchCard[] {
         id: 1,
         match_id: 308,
         market: "AH",
-        selection: "Arsenal -0.75",
+        selection: "Demo United -0.75",
         line: -0.75,
         odds: 1.95,
         model_prob: 0.584,
@@ -67,22 +78,22 @@ function getFallbackFixtures(): MatchCard[] {
         confidence_grade: "B",
         stake_suggestion: 0.015,
         reasons: [
-          "xG 5 trận gần nhất: 2.15 vs 1.10 (chênh lệch +1.05 xG)",
-          "Arsenal bất bại 8 trận sân nhà gần nhất tại Premier League",
-          "Kèo AH giữ vững ở mức -0.75 với lượng tiền đều đặn"
+          "[DEMO DATA] xG 5 trận gần nhất: 2.15 vs 1.10 (chênh lệch +1.05 xG)",
+          "[DEMO DATA] Demo United bất bại 8 trận sân nhà gần nhất tại giải giả lập",
+          "[DEMO DATA] Kèo AH giữ vững ở mức -0.75 với lượng tiền đều đặn"
         ],
-        risk_warning: null,
+        risk_warning: "DỮ LIỆU DEMO GIẢ LẬP: Backend không phản hồi, không sử dụng cho thực tế.",
         status: "PENDING"
       },
       is_no_bet: false
     },
     {
       id: 309,
-      league: { id: 1, code: "E0", name: "Premier League", country: "England" },
+      league: { id: 1, code: "E0", name: "Demo Premier League", country: "England" },
       date: new Date(Date.now() + 6 * 3600000).toISOString(),
       status: "SCHEDULED",
-      home_team: { id: 3, name: "Liverpool", short_name: "LIV", code: "LIV", elo: 1845 },
-      away_team: { id: 2, name: "Manchester City", short_name: "MCI", code: "MCI", elo: 1870 },
+      home_team: { id: 3, name: "Mock Rovers", short_name: "MOC", code: "MOC", elo: 1845 },
+      away_team: { id: 2, name: "Sandbox FC", short_name: "SND", code: "SND", elo: 1870 },
       b365_home_odds: 2.35,
       b365_draw_odds: 3.60,
       b365_away_odds: 2.90,
@@ -90,15 +101,15 @@ function getFallbackFixtures(): MatchCard[] {
       ou_line: 3.0,
       top_tip: null,
       is_no_bet: true,
-      no_bet_reason: "Thị trường siêu thanh khoản, tỉ lệ chênh lệch Edge < 2.0% (NO BET)"
+      no_bet_reason: "DỮ LIỆU DEMO: Thị trường siêu thanh khoản, tỉ lệ chênh lệch Edge < 2.0% (NO BET)"
     },
     {
       id: 310,
-      league: { id: 2, code: "SP1", name: "La Liga", country: "Spain" },
+      league: { id: 2, code: "SP1", name: "Demo La Liga", country: "Spain" },
       date: new Date(Date.now() + 5 * 3600000).toISOString(),
       status: "SCHEDULED",
-      home_team: { id: 21, name: "Real Madrid", short_name: "RMA", code: "RMA", elo: 1860 },
-      away_team: { id: 22, name: "Barcelona", short_name: "BAR", code: "BAR", elo: 1850 },
+      home_team: { id: 21, name: "Simulated Real", short_name: "SRE", code: "SRE", elo: 1860 },
+      away_team: { id: 22, name: "Virtual Barca", short_name: "VBA", code: "VBA", elo: 1850 },
       b365_home_odds: 2.15,
       b365_draw_odds: 3.75,
       b365_away_odds: 3.10,
@@ -118,21 +129,21 @@ function getFallbackFixtures(): MatchCard[] {
         confidence_grade: "B",
         stake_suggestion: 0.016,
         reasons: [
-          "Cả hai đội có trung bình 3.6 bàn thắng/trận trong các trận đối đầu gần đây",
-          "Barcelona áp dụng bẫy việt vị dâng cao, tạo trung bình 4.2 xG kết hợp mỗi trận"
+          "[DEMO DATA] Hai đội giả lập có trung bình 3.6 bàn thắng/trận",
+          "[DEMO DATA] Hệ số xG kết hợp đạt 4.2 xG mỗi trận"
         ],
-        risk_warning: null,
+        risk_warning: "DỮ LIỆU DEMO GIẢ LẬP: Không sử dụng cho thực tế.",
         status: "PENDING"
       },
       is_no_bet: false
     },
     {
       id: 311,
-      league: { id: 3, code: "I1", name: "Serie A", country: "Italy" },
+      league: { id: 3, code: "I1", name: "Demo Serie A", country: "Italy" },
       date: new Date(Date.now() + 7 * 3600000).toISOString(),
       status: "SCHEDULED",
-      home_team: { id: 29, name: "Inter Milan", short_name: "INT", code: "INT", elo: 1840 },
-      away_team: { id: 32, name: "AC Milan", short_name: "MIL", code: "MIL", elo: 1740 },
+      home_team: { id: 29, name: "Dummy Athletic", short_name: "DUM", code: "DUM", elo: 1840 },
+      away_team: { id: 32, name: "Sample Calcio", short_name: "SAM", code: "SAM", elo: 1740 },
       b365_home_odds: 1.95,
       b365_draw_odds: 3.60,
       b365_away_odds: 3.90,
@@ -142,7 +153,7 @@ function getFallbackFixtures(): MatchCard[] {
         id: 3,
         match_id: 311,
         market: "AH",
-        selection: "Inter Milan -0.5",
+        selection: "Dummy Athletic -0.5",
         line: -0.5,
         odds: 1.95,
         model_prob: 0.562,
@@ -152,10 +163,10 @@ function getFallbackFixtures(): MatchCard[] {
         confidence_grade: "A",
         stake_suggestion: 0.02,
         reasons: [
-          "Inter Milan thắng 5/6 trận derby Milan gần nhất",
-          "Chỉ số kiểm soát và tạo cơ hội xG vượt trội (+1.32 so với đối thủ)"
+          "[DEMO DATA] Dummy Athletic thắng 5/6 trận mô phỏng gần nhất",
+          "[DEMO DATA] Chỉ số kiểm soát và tạo cơ hội xG vượt trội (+1.32 so với đối thủ)"
         ],
-        risk_warning: null,
+        risk_warning: "DỮ LIỆU DEMO GIẢ LẬP: Không sử dụng cho thực tế.",
         status: "PENDING"
       },
       is_no_bet: false

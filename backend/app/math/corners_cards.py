@@ -1,7 +1,11 @@
 from typing import Dict, Any, List, Tuple, Optional
 import numpy as np
 from scipy.stats import poisson, nbinom
-from backend.app.math.asian_handicap import calculate_ah_probabilities, calculate_ou_probabilities
+from backend.app.math.asian_handicap import (
+    calculate_ah_probabilities,
+    calculate_ou_probabilities,
+    evaluate_ou_line_outcome
+)
 
 
 class CornersModel:
@@ -131,15 +135,46 @@ class CardsModel:
         return float(max(1.0, base))
 
     @staticmethod
-    def calculate_card_ou_probs(exp_cards: float, line: float = 3.5) -> Dict[str, float]:
-        """Over/Under cards probability using Poisson/NB."""
-        p_under = sum(poisson.pmf(k, exp_cards) for k in range(int(line) + 1))
-        p_over = max(0.0, 1.0 - p_under)
+    def calculate_card_ou_probs(exp_cards: float, line: float = 3.5, max_cards: int = 15) -> Dict[str, float]:
+        """
+        Over/Under cards probability using Poisson distribution and standard O/U settlement,
+        properly handling PUSH on whole lines (e.g. line 3.0) and half-win/loss on quarter lines.
+        """
+        p_win_ov, p_hw_ov, p_push, p_hl_ov, p_loss_ov = 0.0, 0.0, 0.0, 0.0, 0.0
+
+        for k in range(max_cards + 1):
+            prob = float(poisson.pmf(k, exp_cards))
+            outcome_ov = evaluate_ou_line_outcome(k, line, is_over=True)
+            if outcome_ov == "WIN":
+                p_win_ov += prob
+            elif outcome_ov == "HALF_WIN":
+                p_hw_ov += prob
+            elif outcome_ov == "PUSH":
+                p_push += prob
+            elif outcome_ov == "HALF_LOSS":
+                p_hl_ov += prob
+            else:
+                p_loss_ov += prob
+
+        total = p_win_ov + p_hw_ov + p_push + p_hl_ov + p_loss_ov
+        if total > 0:
+            p_win_ov /= total
+            p_hw_ov /= total
+            p_push /= total
+            p_hl_ov /= total
+            p_loss_ov /= total
+
+        eff_over = p_win_ov + 0.5 * p_hw_ov
+        eff_under = p_loss_ov + 0.5 * p_hl_ov
+
         return {
             "line": line,
-            "over_prob": float(p_over),
-            "under_prob": float(p_under),
-            "fair_over_odds": float(1.0 / max(0.01, p_over)),
-            "fair_under_odds": float(1.0 / max(0.01, p_under)),
+            "over_prob": float(eff_over),
+            "under_prob": float(eff_under),
+            "p_win_over": float(p_win_ov),
+            "p_push": float(p_push),
+            "p_win_under": float(p_loss_ov),
+            "fair_over_odds": float(1.0 / max(0.01, eff_over)),
+            "fair_under_odds": float(1.0 / max(0.01, eff_under)),
             "label": "Thử nghiệm"
         }
