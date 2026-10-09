@@ -9,9 +9,10 @@ import ScoreHeatmap from "@/components/ScoreHeatmap";
 import RadarChartComponent from "@/components/RadarChart";
 import FormChart from "@/components/FormChart";
 import LineMovementChart from "@/components/LineMovementChart";
+import ManualOddsCalculator from "@/components/ManualOddsCalculator";
 import {
   ArrowLeft, Activity, Award, ShieldAlert, AlertTriangle,
-  Flame, TrendingUp, HelpCircle, BarChart2, Users, Layers
+  Flame, TrendingUp, HelpCircle, BarChart2, Users, Layers, Calculator
 } from "lucide-react";
 
 export default function MatchCenterPage() {
@@ -122,6 +123,7 @@ export default function MatchCenterPage() {
       <div className="flex overflow-x-auto gap-2 border-b border-slate-800 pb-2">
         {[
           { id: "overview", label: "Tổng Quan & Tips", icon: Award },
+          { id: "calculator", label: "Nhập Odds Thủ Công (Góc/Thẻ)", icon: Calculator },
           { id: "heatmap", label: "Ma Trận Tỉ Số", icon: Activity },
           { id: "radar", label: "Radar So Sánh", icon: BarChart2 },
           { id: "form", label: "Phong Độ 10 Trận", icon: Users },
@@ -255,9 +257,17 @@ export default function MatchCenterPage() {
             </div>
           </div>
 
+          {/* Manual Odds Calculator for Corners / Cards */}
+          <ManualOddsCalculator homeTeam={hTeam} awayTeam={aTeam} />
+
           {/* Quick Score Heatmap summary */}
           <ScoreHeatmap scoreData={analysis.score_matrix} homeTeam={hTeam} awayTeam={aTeam} />
         </div>
+      )}
+
+      {/* TAB CONTENT: MANUAL ODDS CALCULATOR */}
+      {activeTab === "calculator" && (
+        <ManualOddsCalculator homeTeam={hTeam} awayTeam={aTeam} />
       )}
 
       {/* TAB CONTENT 2: SCORE MATRIX */}

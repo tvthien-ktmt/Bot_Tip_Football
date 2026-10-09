@@ -1,0 +1,285 @@
+{
+  "files_processed": 25,
+  "total_raw_rows": 8292,
+  "clean_rows": 8292,
+  "duplicate_rows_dropped": 0,
+  "negative_scores_found": 0,
+  "invalid_odds_found": 0,
+  "file_reports": [
+    {
+      "file": "Bundesliga 2022.csv",
+      "league": "D1",
+      "rows": 306,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2022/23"
+      ]
+    },
+    {
+      "file": "Bundesliga 2023.csv",
+      "league": "D1",
+      "rows": 306,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2023/24"
+      ]
+    },
+    {
+      "file": "Bundesliga 2024.csv",
+      "league": "D1",
+      "rows": 306,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2024/25"
+      ]
+    },
+    {
+      "file": "Bundesliga 2025.csv",
+      "league": "D1",
+      "rows": 306,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2025/26"
+      ]
+    },
+    {
+      "file": "Bundesliga 2026.csv",
+      "league": "D1",
+      "rows": 36,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2026/27"
+      ]
+    },
+    {
+      "file": "Championship 2022.csv",
+      "league": "E1",
+      "rows": 552,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2022/23"
+      ]
+    },
+    {
+      "file": "Championship 2023.csv",
+      "league": "E1",
+      "rows": 552,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2023/24"
+      ]
+    },
+    {
+      "file": "Championship 2024.csv",
+      "league": "E1",
+      "rows": 552,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2024/25"
+      ]
+    },
+    {
+      "file": "Championship 2025.csv",
+      "league": "E1",
+      "rows": 552,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2025/26"
+      ]
+    },
+    {
+      "file": "Championship 2026.csv",
+      "league": "E1",
+      "rows": 95,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2026/27"
+      ]
+    },
+    {
+      "file": "La Liga 2022.csv",
+      "league": "SP1",
+      "rows": 380,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2022/23"
+      ]
+    },
+    {
+      "file": "La Liga 2023.csv",
+      "league": "SP1",
+      "rows": 380,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2023/24"
+      ]
+    },
+    {
+      "file": "La Liga 2024.csv",
+      "league": "SP1",
+      "rows": 380,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2024/25"
+      ]
+    },
+    {
+      "file": "La Liga 2025.csv",
+      "league": "SP1",
+      "rows": 380,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2025/26"
+      ]
+    },
+    {
+      "file": "La Liga 2026.csv",
+      "league": "SP1",
+      "rows": 69,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2026/27"
+      ]
+    },
+    {
+      "file": "Season 20222023.csv",
+      "league": "E0",
+      "rows": 380,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2022/23"
+      ]
+    },
+    {
+      "file": "Season 20232024.csv",
+      "league": "E0",
+      "rows": 380,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2023/24"
+      ]
+    },
+    {
+      "file": "Season 20242025.csv",
+      "league": "E0",
+      "rows": 380,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2024/25"
+      ]
+    },
+    {
+      "file": "Season 20252026.csv",
+      "league": "E0",
+      "rows": 380,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2025/26"
+      ]
+    },
+    {
+      "file": "Season 20262027.csv",
+      "league": "E0",
+      "rows": 50,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2026/27"
+      ]
+    },
+    {
+      "file": "2022.csv",
+      "league": "I1",
+      "rows": 380,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2022/23"
+      ]
+    },
+    {
+      "file": "2023.csv",
+      "league": "I1",
+      "rows": 380,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2023/24"
+      ]
+    },
+    {
+      "file": "2024.csv",
+      "league": "I1",
+      "rows": 380,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2024/25"
+      ]
+    },
+    {
+      "file": "2025.csv",
+      "league": "I1",
+      "rows": 380,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2025/26"
+      ]
+    },
+    {
+      "file": "2026.csv",
+      "league": "I1",
+      "rows": 50,
+      "duplicates": 0,
+      "negative_scores": 0,
+      "invalid_odds": 0,
+      "seasons": [
+        "2026/27"
+      ]
+    }
+  ]
+}

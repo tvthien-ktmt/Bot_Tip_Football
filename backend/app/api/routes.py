@@ -657,3 +657,116 @@ def retrain_models(db: Session = Depends(get_db)):
     metrics = engine.run_backtest()
     return {"status": "retrained", "metrics": metrics}
 
+
+@router.get("/predict/upcoming")
+def get_upcoming_predictions(
+    league: Optional[str] = Query(None, description="League code e.g. E0, E1, SP1, I1, D1"),
+    mode: str = Query("T-24h", description="Cutoff mode: T-24h or T-1h")
+):
+    """
+    Get comprehensive predictions and tips for upcoming fixtures in Section 8 JSON format.
+    """
+    from backend.app.data.fixtures_client import UpcomingFixturesClient
+    from backend.app.pipeline.match_predictor import MatchPredictor
+
+    client = UpcomingFixturesClient()
+    target_divs = [league] if league else ["E0", "E1", "SP1", "I1", "D1"]
+    fixtures_df = client.get_upcoming_fixtures(target_divs=target_divs)
+
+    if fixtures_df.empty:
+        return {"count": 0, "predictions": [], "message": "Không tìm thấy trận sắp đá."}
+
+    parquet_path = settings.BASE_DIR / "backend" / "data" / "cleaned_matches.parquet"
+    hist_df = pd.read_parquet(parquet_path) if parquet_path.exists() else None
+
+    predictor = MatchPredictor(mode=mode)
+    results = []
+    for _, row in fixtures_df.iterrows():
+        pred = predictor.predict_match(row, historical_matches=hist_df)
+        results.append(pred)
+
+    return {
+        "count": len(results),
+        "cutoff_mode": mode,
+        "as_of_date": "2026-10-09",
+        "predictions": results
+    }
+
+
+@router.get("/backtest/report")
+def get_backtest_report():
+    """Return generated walk-forward backtest report and model card."""
+    report_dir = settings.BASE_DIR / "backend" / "reports"
+    md_file = report_dir / "backtest_report.md"
+    card_file = report_dir / "model_card.json"
+
+    md_content = md_file.read_text(encoding="utf-8") if md_file.exists() else "Báo cáo đang được xử lý..."
+    card_json = json.loads(card_file.read_text(encoding="utf-8")) if card_file.exists() else {}
+
+    return {
+        "markdown_report": md_content,
+        "model_card": card_json,
+        "html_url": "/reports/backtest_report.html"
+    }
+
+
+@router.post("/manual/eval")
+def evaluate_manual_bet(payload: Dict[str, Any]):
+    """
+    User manually inputs custom line and bookmaker odds for Corners, Cards, or non-2.5 Lines.
+    Returns fair probability, EV, and experimental lean.
+    """
+    market = payload.get("market", "CORNERS_OU").upper()
+    line = float(payload.get("line", 10.5))
+    odds = float(payload.get("odds", 1.90))
+    selection = payload.get("selection", "OVER").upper()
+
+    from backend.app.math.corners_cards import CornersModel, CardsModel
+    cm = CornersModel()
+    card_m = CardsModel()
+
+    if "CORNER" in market:
+        # Default average match expected corners 10.00
+        mat = cm.generate_corner_matrix(5.5, 4.5)
+        m_type = "OU" if "OU" in market else "AH"
+        res = cm.compute_manual_ev(mat, market_type=m_type, line=line, odds=odds, selection=selection)
+        return res
+    elif "CARD" in market:
+        exp_cards = card_m.compute_expected_cards(referee_avg_cards=3.8)
+        probs = card_m.calculate_card_ou_probs(exp_cards, line=line)
+        prob = probs["over_prob"] if selection == "OVER" else probs["under_prob"]
+        ev = prob * (odds - 1.0) - (1.0 - prob)
+        return {
+            "market": "Cards O/U",
+            "line": line,
+            "selection": selection,
+            "user_odds": odds,
+            "model_prob": prob,
+            "fair_odds": 1.0 / max(0.01, prob),
+            "ev": ev,
+            "edge": prob - (1.0 / odds),
+            "label": "Thử nghiệm"
+        }
+    else:
+        # Goal line
+        from backend.app.math.dixon_coles import DixonColesModel
+        from backend.app.math.asian_handicap import calculate_ou_probabilities
+        dc = DixonColesModel()
+        mat = dc.score_matrix(1.50, 1.25)
+        is_over = (selection == "OVER")
+        ou_res = calculate_ou_probabilities(mat, line=line, is_over=is_over)
+        prob = ou_res["effective_win_prob"]
+        ev = prob * (odds - 1.0) - (1.0 - prob)
+        return {
+            "market": f"Goals O/U {line}",
+            "line": line,
+            "selection": selection,
+            "user_odds": odds,
+            "model_prob": prob,
+            "fair_odds": 1.0 / max(0.01, prob),
+            "ev": ev,
+            "edge": prob - (1.0 / odds),
+            "label": "Tự nhập"
+        }
+
+
