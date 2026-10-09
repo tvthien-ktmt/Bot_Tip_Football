@@ -127,28 +127,63 @@ def get_fixtures(
                     ah_probs=ah_markets[m.ah_line]["home_breakdown"],
                     context_stats={"model_advantage": f"Mô hình Dixon-Coles đánh giá sức công {h_team.name} vượt trội ({exp_h:.2f} xG)"}
                 )
-                if candidate:
-                    top_tip_obj = TipOut(
-                        id=m.id,
-                        match_id=m.id,
-                        market=candidate["market"],
-                        selection=candidate["selection"],
-                        line=candidate["line"],
-                        odds=candidate["odds"],
-                        model_prob=candidate["model_prob"],
-                        fair_prob=candidate["fair_prob"],
-                        edge=candidate["edge"],
-                        ev=candidate["ev"],
-                        confidence_grade=candidate["confidence_grade"],
-                        stake_suggestion=candidate["stake_suggestion"],
-                        reasons=candidate["reasons"],
-                        risk_warning=candidate["risk_warning"],
-                        status="PENDING",
-                        result_pnl=0.0,
-                        clv=None
+                if not candidate:
+                    candidate = tip_engine.evaluate_market_selection(
+                        market="AH",
+                        selection=f"{a_team.name} {-m.ah_line:+g}",
+                        line=-m.ah_line,
+                        odds=m.ah_away_odds,
+                        model_prob=ah_markets[m.ah_line]["away_prob"],
+                        fair_prob=fair_ah[1],
+                        ah_probs=ah_markets[m.ah_line]["away_breakdown"],
+                        context_stats={"model_advantage": f"Mô hình Dixon-Coles đánh giá sức kháng cự {a_team.name} vững chắc ({exp_a:.2f} xG)"}
                     )
-                    is_no_bet = False
-                    no_bet_reason = None
+
+            if not candidate and m.ou_line is not None and m.ou_over_odds and m.ou_under_odds:
+                fair_ou = get_fair_probabilities([m.ou_over_odds, m.ou_under_odds], method="shin")
+                ou_markets = ScoreMatrixProcessor.extract_ou_markets(matrix, lines=[m.ou_line])
+                candidate = tip_engine.evaluate_market_selection(
+                    market="OU",
+                    selection=f"Over {m.ou_line}",
+                    line=m.ou_line,
+                    odds=m.ou_over_odds,
+                    model_prob=ou_markets[m.ou_line]["over_prob"],
+                    fair_prob=fair_ou[0],
+                    context_stats={"model_advantage": f"Tổng xG kỳ vọng {exp_h + exp_a:.2f} bàn"}
+                )
+                if not candidate:
+                    candidate = tip_engine.evaluate_market_selection(
+                        market="OU",
+                        selection=f"Under {m.ou_line}",
+                        line=m.ou_line,
+                        odds=m.ou_under_odds,
+                        model_prob=ou_markets[m.ou_line]["under_prob"],
+                        fair_prob=fair_ou[1],
+                        context_stats={"model_advantage": f"Tổng xG kỳ vọng {exp_h + exp_a:.2f} bàn"}
+                    )
+
+            if candidate:
+                top_tip_obj = TipOut(
+                    id=m.id,
+                    match_id=m.id,
+                    market=candidate["market"],
+                    selection=candidate["selection"],
+                    line=candidate["line"],
+                    odds=candidate["odds"],
+                    model_prob=candidate["model_prob"],
+                    fair_prob=candidate["fair_prob"],
+                    edge=candidate["edge"],
+                    ev=candidate["ev"],
+                    confidence_grade=candidate["confidence_grade"],
+                    stake_suggestion=candidate["stake_suggestion"],
+                    reasons=candidate["reasons"],
+                    risk_warning=candidate["risk_warning"],
+                    status="PENDING",
+                    result_pnl=0.0,
+                    clv=None
+                )
+                is_no_bet = False
+                no_bet_reason = None
 
         results.append(MatchCardOut(
             id=m.id,
@@ -373,6 +408,20 @@ def get_match_analysis(match_id: int, db: Session = Depends(get_db)):
                 "model_advantage": f"Mô hình ước tính xG {exp_h:.2f} vs {exp_a:.2f}"
             }
         )
+        if not cand:
+            cand = tip_engine.evaluate_market_selection(
+                market="AH",
+                selection=f"{a_team.name} {-m.ah_line:+g}",
+                line=-m.ah_line,
+                odds=m.ah_away_odds,
+                model_prob=ah_markets[m.ah_line]["away_prob"],
+                fair_prob=fair_ah[1],
+                ah_probs=ah_markets[m.ah_line]["away_breakdown"],
+                context_stats={
+                    "form_desc": f"{a_team.name} nhận trung bình {away_form.avg_goals_conceded} bàn thua/trận ở 10 trận gần nhất",
+                    "model_advantage": f"Mô hình ước tính xG {exp_a:.2f} vs {exp_h:.2f}"
+                }
+            )
         if cand:
             tips_list.append(TipOut(
                 id=m.id * 10 + 1,
@@ -394,7 +443,7 @@ def get_match_analysis(match_id: int, db: Session = Depends(get_db)):
         else:
             no_bet_list.append({
                 "market": "Asian Handicap (AH)",
-                "reason": "Chênh lệch xác suất mô hình và thị trường < 2.5% (Không có edge)"
+                "reason": "Chênh lệch xác suất mô hình và thị trường cả hai cửa < 2.5% (Không có edge)"
             })
 
     # O/U
@@ -409,9 +458,22 @@ def get_match_analysis(match_id: int, db: Session = Depends(get_db)):
             fair_prob=fair_ou[0],
             context_stats={
                 "form_desc": f"Hai đội có tổng xG kỳ vọng {exp_h + exp_a:.2f} bàn thắng",
-                "model_advantage": f"Tỉ lệ Over 2.5 từ mô hình Dixon-Coles là {ou_dc['over_prob']*100:.1f}%"
+                "model_advantage": f"Tỉ lệ Over {m.ou_line} từ mô hình Dixon-Coles là {ou_dc['over_prob']*100:.1f}%"
             }
         )
+        if not ou_cand:
+            ou_cand = tip_engine.evaluate_market_selection(
+                market="OU",
+                selection=f"Under {m.ou_line}",
+                line=m.ou_line,
+                odds=m.ou_under_odds,
+                model_prob=ou_dc["under_prob"],
+                fair_prob=fair_ou[1],
+                context_stats={
+                    "form_desc": f"Hai đội có tổng xG kỳ vọng {exp_h + exp_a:.2f} bàn thắng",
+                    "model_advantage": f"Tỉ lệ Under {m.ou_line} từ mô hình Dixon-Coles là {ou_dc['under_prob']*100:.1f}%"
+                }
+            )
         if ou_cand:
             tips_list.append(TipOut(
                 id=m.id * 10 + 2,

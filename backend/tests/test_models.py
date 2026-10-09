@@ -119,3 +119,32 @@ def test_cards_whole_line_push_exclusion():
     assert res["p_push"] == pytest.approx(expected_p_push, abs=1e-4)
     # Ensure P(push) is strictly not included in p_win_under
     assert res["p_win_under"] < float(poisson.cdf(3, exp_cards)) - 0.05
+
+
+def test_yip_zou_bivariate_poisson_corners():
+    """Verify Yip & Zou (2021) Bivariate Poisson corner matrix sums to 1.0."""
+    cm = CornersModel()
+    mat_bp = cm.generate_bivariate_poisson_corner_matrix(exp_home=5.5, exp_away=4.5, covariance_lambda3=0.65, max_corners=18)
+    assert abs(np.sum(mat_bp) - 1.0) < 1e-9
+    assert mat_bp.shape == (19, 19)
+    assert np.all(mat_bp >= 0.0)
+
+    # Test that extract_corner_ou produces valid probabilities in [0, 1]
+    ou_res = cm.extract_corner_ou(mat_bp)
+    for line, vals in ou_res.items():
+        assert 0.0 <= vals["over_prob"] <= 1.0
+        assert 0.0 <= vals["under_prob"] <= 1.0
+
+
+def test_walkforward_ah_eff_win_execution():
+    """Verify WalkForwardEvaluator runs without NameError on ah_eff_win."""
+    from backend.app.backtest.walkforward import WalkForwardEvaluator
+    evaluator = WalkForwardEvaluator()
+    # Test on E0 with a fast slice if data exists
+    if evaluator.data_path.exists():
+        res = evaluator.run_league_backtest(league_div="E0", mode="T-24h")
+        assert "metrics" in res or "error" in res
+        if "metrics" in res:
+            assert "model_final" in res["metrics"]
+            assert "simulation_tips" in res
+

@@ -169,6 +169,7 @@ class WalkForwardEvaluator:
                 ah_line_f = float(ah_line)
                 ah_price_f = float(ah_price)
                 ah_probs = calculate_ah_probabilities(score_mat_m2, ah_line_f)
+                ah_eff_win = ah_probs["effective_win_prob"]
                 ah_away_p = row.get("ref_open_aha" if mode == "T-24h" else "ref_close_aha", np.nan)
                 if pd.notna(ah_away_p) and float(ah_away_p) > 1.01:
                     fair_ah_p = get_fair_probabilities([ah_price_f, float(ah_away_p)], method="shin")[0]

@@ -293,8 +293,9 @@ class MatchPredictor:
                     "reasons": [f"Tổng bàn thắng kỳ vọng {exp_goals_h + exp_goals_a:.2f} > 2.5", ctx["form_desc"]],
                     "risks": ["Hiệu suất chuyển hóa cơ hội thấp trong các trận cầu đinh"]
                 })
-            # Check Under 2.5
-            elif edge_un := (p_model_un25 - fair_un25):
+            else:
+                # Check Under 2.5
+                edge_un = p_model_un25 - fair_un25
                 ev_un = p_model_un25 * (float(o_un) - 1.0) - (1.0 - p_model_un25)
                 if edge_un >= 0.028 and ev_un >= 0.035:
                     tips.append({
@@ -313,8 +314,6 @@ class MatchPredictor:
                     })
                 else:
                     no_bet_reasons.append("Tài/Xỉu 2.5: Biên lợi nhuận thị trường hấp thụ hoàn toàn edge thống kê.")
-            else:
-                no_bet_reasons.append("Tài/Xỉu 2.5: Biên lợi nhuận thị trường hấp thụ hoàn toàn edge thống kê.")
 
         # 1X2 Evaluation
         if valid_1x2:
